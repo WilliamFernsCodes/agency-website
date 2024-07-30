@@ -12,7 +12,7 @@ import ProjectsListingContainer from "Components/Projects/ProjectsListingContain
 import ProjectsData from "Data/Projects/Projects.data";
 
 //Background
-import Particle from "Assets/projects/particle.png";
+import Particle from "Assets/projects/other/particle.png";
 
 //Styles
 import styles from "Styles/Projects/Projects.styles";
