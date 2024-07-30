@@ -1,13 +1,10 @@
 import { Grid, Box, Typography } from "@mui/material";
 import Link from "next/link";
 
-//Icons
-import { PlusIcon } from "Utilis/Icons";
-
 //Styles
-import styles from "Styles/Projects/Work.styles";
+import styles from "Styles/Projects/ProjectsListingContainer.styles";
 
-const Work = ({ works }) => {
+const ProjectsListingContainer = ({ projectsData }) => {
   return (
     <Grid
       container
@@ -22,8 +19,8 @@ const Work = ({ works }) => {
         xxs: 2,
       }}
     >
-      {works &&
-        works.map((work, i) => (
+      {projectsData &&
+        projectsData.map((project, i) => (
           <Grid item sm={6} xxs={12} key={i}>
             <Box
               sx={{
@@ -34,16 +31,19 @@ const Work = ({ works }) => {
                 },
               }}
             >
-              <Link href={work.url}>
+              <Link href={project.url}>
                 <a target="_blank">
-                  <Box sx={styles.ImageBox}>
-                    <Box component="img" src={work.image} />
-                    <Box className="css-mui-svg">
-                      <PlusIcon />
-                    </Box>
-                  </Box>
-                  <Typography variant="h5" component="h5" sx={styles.WorkTitle}>
-                    {work.name}
+                  <Box
+                    sx={styles.ImageBox}
+                    component="img"
+                    src={project.image}
+                  />
+                  <Typography
+                    variant="h5"
+                    component="h5"
+                    sx={styles.ProjectTitle}
+                  >
+                    {project.name}
                   </Typography>
                 </a>
               </Link>
@@ -53,4 +53,4 @@ const Work = ({ works }) => {
     </Grid>
   );
 };
-export default Work;
+export default ProjectsListingContainer;

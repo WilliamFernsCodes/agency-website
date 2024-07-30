@@ -6,7 +6,7 @@ import { TabContext, TabList, TabPanel } from "@mui/lab";
 import SectionHeading from "Utilis/SectionHeading";
 
 //Components
-import Work from "Components/Projects/Work";
+import ProjectsListingContainer from "Components/Projects/ProjectsListingContainer";
 
 //Data
 import ProjectsData from "Data/Projects/Projects.data";
@@ -44,11 +44,7 @@ const Projects = () => {
       sx={styles.Container}
       id="projects"
     >
-      <SectionHeading
-        value1="Latest Project That"
-        value2="Recently Done"
-        border={false}
-      />
+      <SectionHeading value1="Our Projects" border={false} />
       <TabContext value={value}>
         <Box sx={{ mt: "3em" }}>
           <TabList
@@ -67,15 +63,14 @@ const Projects = () => {
               onClick={() => filterItem("web")}
             />
             <Tab
-              label="App Development"
+              label="Backend Development"
               value="2"
-              onClick={() => filterItem("app")}
+              onClick={() => filterItem("backend")}
             />
-            <Tab label="UI/UX" value="3" onClick={() => filterItem("ui")} />
             <Tab
-              label="Graphics Design"
-              value="4"
-              onClick={() => filterItem("graphic")}
+              label="UI/UX Design"
+              value="3"
+              onClick={() => filterItem("ui")}
             />
           </TabList>
         </Box>
@@ -90,7 +85,7 @@ const Projects = () => {
                   container={containerRef.current}
                 >
                   <Box>
-                    <Work works={Items} />
+                    <ProjectsListingContainer projectsData={Items} />
                   </Box>
                 </Slide>
               </Box>
@@ -108,7 +103,7 @@ const Projects = () => {
                   container={containerRef.current}
                 >
                   <Box>
-                    <Work works={Items} />
+                    <ProjectsListingContainer works={Items} />
                   </Box>
                 </Slide>
               </Box>
@@ -126,7 +121,7 @@ const Projects = () => {
                   timeout={800}
                 >
                   <Box>
-                    <Work works={Items} />
+                    <ProjectsListingContainer works={Items} />
                   </Box>
                 </Slide>
               </Box>
@@ -144,7 +139,7 @@ const Projects = () => {
                   container={containerRef.current}
                 >
                   <Box>
-                    <Work works={Items} />
+                    <ProjectsListingContainer works={Items} />
                   </Box>
                 </Slide>
               </Box>
@@ -152,7 +147,12 @@ const Projects = () => {
           </Box>
         </TabPanel>
       </TabContext>
-      <Box component="img" src={Particle} alt="particle" sx={styles.Particle} />
+      <Box
+        component="img"
+        src={Particle}
+        alt="particle"
+        sx={styles.ProjectTitle}
+      />
     </Container>
   );
 };

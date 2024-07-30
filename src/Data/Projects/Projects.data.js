@@ -1,53 +1,54 @@
 //Images
 import Work from "Assets/projects/work.png";
+import CookieJar from "Assets/projects/cookiejar.jpeg";
 
 export default [
   {
-    name: "Graphics Design",
-    filter: "graphic",
-    image: Work,
-    url: "/",
-  },
-  {
-    name: "Graphics Design",
-    filter: "graphic",
-    image: Work,
-    url: "/",
-  },
-  {
-    name: "Web Development",
+    name: "Cookie Jar",
     filter: "web",
-    image: Work,
-    url: "/",
+    image: CookieJar,
+    url: "https://cookiejar.co",
   },
-  {
-    name: "Web Development",
-    filter: "web",
-    image: Work,
-    url: "/",
-  },
-  {
-    name: "Web Development",
-    filter: "web",
-    image: Work,
-    url: "/",
-  },
-  {
-    name: "App Development",
-    filter: "app",
-    image: Work,
-    url: "/",
-  },
-  {
-    name: "Web Development",
-    filter: "web",
-    image: Work,
-    url: "/",
-  },
-  {
-    name: "UI/UX",
-    filter: "ui",
-    image: Work,
-    url: "/",
-  },
+  // {
+  //   name: "Graphics Design",
+  //   filter: "graphic",
+  //   image: Work,
+  //   url: "/",
+  // },
+  // {
+  //   name: "Web Development",
+  //   filter: "web",
+  //   image: Work,
+  //   url: "/",
+  // },
+  // {
+  //   name: "Web Development",
+  //   filter: "web",
+  //   image: Work,
+  //   url: "/",
+  // },
+  // {
+  //   name: "Web Development",
+  //   filter: "web",
+  //   image: Work,
+  //   url: "/",
+  // },
+  // {
+  //   name: "App Development",
+  //   filter: "app",
+  //   image: Work,
+  //   url: "/",
+  // },
+  // {
+  //   name: "Web Development",
+  //   filter: "web",
+  //   image: Work,
+  //   url: "/",
+  // },
+  // {
+  //   name: "UI/UX",
+  //   filter: "ui",
+  //   image: Work,
+  //   url: "/",
+  // },
 ];
