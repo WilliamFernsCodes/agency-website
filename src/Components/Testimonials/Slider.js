@@ -31,7 +31,10 @@ const Sliders = () => {
   useEffect(() => {
     const setTestimonialsData = async () => {
       const testimonialsData = await getTestimonials();
-      setTestimonials(testimonialsData);
+      const allTestimonials = testimonialsData
+        .map((user) => user.userBounties)
+        .flat();
+      setTestimonials(allTestimonials);
     };
     setTestimonialsData();
   }, []);

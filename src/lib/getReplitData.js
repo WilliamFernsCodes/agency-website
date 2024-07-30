@@ -64,7 +64,7 @@ const getReplitData = async (users) => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json(); // or response.text() if the response is not JSON
-      const bountyInfo = data["bountyInfo"];
+      const bountyInfo = data["data"]["user"]["bountyInfo"];
       const stats = bountyInfo["stats"];
       const hunterEarnings = bountyInfo["hunterEarnings"];
       userData.userInfo = {
@@ -73,7 +73,6 @@ const getReplitData = async (users) => {
         totalReviews: stats["numHunterReviews"],
         approximateCyclesEarned: hunterEarnings["approximateCyclesEarned"],
       };
-      console.log(data);
     } catch (error) {
       console.error("Error making POST request:", error);
     }
@@ -81,37 +80,41 @@ const getReplitData = async (users) => {
     let after = 0;
     let allBountiesData = [];
     while (true) {
-      config["body"] = [
-        {
-          operationName: "BountyHunterInsightsBounties",
-          variables: {
-            input: {
-              hunterId: 23084769,
-              statuses: ["inProgress", "completed"],
-              order: "creationDateDescending",
-              listingState: "listed",
-            },
+      config["body"] = {
+        operationName: "BountyHunterInsightsBounties",
+        variables: {
+          input: {
+            hunterId: user.id,
+            statuses: ["inProgress", "completed"],
+            order: "creationDateDescending",
+            listingState: "listed",
           },
-          query:
-            "query BountyHunterInsightsBounties($input: BountySearchInput!) {\n  bountySearch(input: $input) {\n    __typename\n    ... on UserError {\n      message\n      __typename\n    }\n    ... on UnauthorizedError {\n      message\n      __typename\n    }\n    ... on BountySearchConnection {\n      items {\n        id\n        ...BountyHunterInsightsCard\n        __typename\n      }\n      pageInfo {\n        hasNextPage\n        nextCursor\n        __typename\n      }\n      __typename\n    }\n  }\n}\n\nfragment BountyHunterInsightsCard on Bounty {\n  id\n  title\n  status\n  slug\n  solverPayout\n  bountyHunterReview {\n    id\n    communicationRating\n    qualityRating\n    timelinessRating\n    reviewText\n    reviewingUser {\n      id\n      username\n      image\n      url\n      __typename\n    }\n    __typename\n  }\n  user {\n    id\n    username\n    image\n    url\n    __typename\n  }\n  __typename\n}\n",
         },
-      ];
+        query:
+          "query BountyHunterInsightsBounties($input: BountySearchInput!) {\n  bountySearch(input: $input) {\n    __typename\n    ... on UserError {\n      message\n      __typename\n    }\n    ... on UnauthorizedError {\n      message\n      __typename\n    }\n    ... on BountySearchConnection {\n      items {\n        id\n        ...BountyHunterInsightsCard\n        __typename\n      }\n      pageInfo {\n        hasNextPage\n        nextCursor\n        __typename\n      }\n      __typename\n    }\n  }\n}\n\nfragment BountyHunterInsightsCard on Bounty {\n  id\n  title\n  status\n  slug\n  solverPayout\n  bountyHunterReview {\n    id\n    communicationRating\n    qualityRating\n    timelinessRating\n    reviewText\n    reviewingUser {\n      id\n      username\n      image\n      url\n      __typename\n    }\n    __typename\n  }\n  user {\n    id\n    username\n    image\n    url\n    __typename\n  }\n  __typename\n}\n",
+      };
 
       if (after !== 0) {
-        config["body"][0]["variables"]["input"]["after"] = after;
+        config["body"]["variables"]["input"]["after"] = after.toString();
       }
+      config["body"] = JSON.stringify(config["body"]);
+      console.log(config["body"]);
+      let data;
       try {
         const response = await fetch("https://replit.com/graphql", config);
         if (!response.ok) {
-          console.error(`HTTP error! Status: ${response.status}`);
+          console.error(
+            `HTTP error! Status: ${response.status}. Response: ${JSON.stringify(response)}`,
+          );
         } else {
-          const data = await response.json();
+          data = await response.json();
+          console.log(`Data: ${JSON.stringify(data, null, 2)}`);
         }
       } catch (e) {
         console.error("Error making POST request:", e);
         return [];
       }
-      const items = data["bountySearch"]["items"];
+      const items = data["data"]["bountySearch"]["items"];
       if (items.length === 0) {
         break;
       } else {
@@ -126,34 +129,44 @@ const getReplitData = async (users) => {
       //     "They Provide great quality service and their behavior is so much helpful.",
       //   avatar: Testimonial,
       // },
+      //
+      const calculateBountyRating = (item) => {
+        const ratingsKeys = [
+          "communicationRating",
+          "qualityRating",
+          "timelinessRating",
+        ];
+        const totalStars = Number(
+          ratingsKeys.reduce(
+            (acc, key) => acc + item.bountyHunterReview[key],
+            0,
+          ) / ratingsKeys.length,
+        ).toFixed(0);
+        return totalStars;
+      };
       const completedWithReviewsBounties = items
         .filter(
-          (item) => item.status === "completed" && item.bountyHunterReview,
+          (item) =>
+            item.status === "completed" &&
+            item.bountyHunterReview &&
+            item.bountyHunterReview &&
+            calculateBountyRating(item) >= 4 &&
+            item.bountyHunterReview.reviewText,
         )
         .sort((a, b) => a.solverPayout - b.solverPayout)
         .map((item) => {
           const poster = item.user;
-          const ratingsKeys = [
-            "communicationRating",
-            "qualityRating",
-            "timelinessRating",
-          ];
-          const totalStars = Number(
-            ratingsKeys.reduce(
-              (acc, key) => acc + item.bountyHunterReview[key],
-              0,
-            ) / ratingsKeys.length,
-          ).toFixed(0);
+          const totalStars = calculateBountyRating(item);
 
           return {
             title: item.title,
             name: poster.username,
             star: totalStars,
-            review: item.reviewText,
+            review: item.bountyHunterReview.reviewText,
             avatarURL: poster.image,
           };
         });
-      allBountiesData.push.apply(completedWithReviewsBounties);
+      allBountiesData = [...allBountiesData, ...completedWithReviewsBounties];
     }
     userData.userBounties = allBountiesData;
     finalUsersData.push(userData);
@@ -161,3 +174,5 @@ const getReplitData = async (users) => {
 
   return finalUsersData;
 };
+
+export default getReplitData;

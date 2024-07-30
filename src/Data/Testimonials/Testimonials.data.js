@@ -1,7 +1,4 @@
-import Testimonial from "Assets/testimonials/client-1.png";
 import bountyHunters from "Data/Team/bountyHunters";
-
-import { getReplitData } from "Data/FetchData";
 // {
 //   title: "Quality Service",
 //   name: "Particle",
@@ -11,6 +8,20 @@ import { getReplitData } from "Data/FetchData";
 //   avatar: Testimonial,
 // },
 const getTestimonials = async () => {
-  const testimonials = await getReplitData(bountyHunters);
+  let data;
+  try {
+    const response = await fetch("/api/getReplitData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bountyHunters),
+    });
+    data = await response.json();
+  } catch (error) {
+    console.error(`Error with getting Replit data: ${error}`);
+    return [];
+  }
+  return data;
 };
 export default getTestimonials;
