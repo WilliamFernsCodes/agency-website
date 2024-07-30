@@ -2,15 +2,18 @@
 import Heads from "Utilis/Heads";
 
 // Sections
-import Header from "Section/Header";
-import Hero from "Section/Hero";
-import About from "Section/About";
-import Portfolio from "Section/Portfolio";
-import Skill from "Section/Skill";
-import Client from "Section/Client";
-import Blog from "Section/Blog";
-import Contact from "Section/Contact";
-import Footer from "Section/Footer";
+//
+import {
+  Header,
+  Hero,
+  About,
+  Projects,
+  Skill,
+  Testimonials,
+  Blog,
+  Contact,
+  Footer,
+} from "Sections";
 
 const index = () => {
   return (
@@ -19,9 +22,9 @@ const index = () => {
       <Header />
       <Hero />
       <About />
-      <Portfolio />
+      <Projects />
       <Skill />
-      <Client />
+      <Testimonials />
       <Blog />
       <Contact />
       <Footer />

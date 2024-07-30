@@ -17,7 +17,7 @@ const HeroContent = () => {
         Dealing with unreliable developers? Our experienced team delivers
         consistent, top-notch results that propel your business forward.
       </Typography>
-      <Link to="portfolio" spy={true} smooth={true} duration={500}>
+      <Link to="projects" spy={true} smooth={true} duration={500}>
         <ButtonBase sx={styles.Button}>
           See Testimonials
           <ArrowForwardTwoToneIcon />
