@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { Link } from "react-scroll";
+import styles from "Styles/Other/Logo.styles";
 
 import Logo from "Assets/header/logo.svg";
 
@@ -17,8 +18,8 @@ const CompanyLogo = () => {
             gap: "10px",
           }}
         >
-          <Image src={Logo} width={30} height={30} alt="Logo" />
-          <Typography sx={{ fontWeight: "600" }}>Automa Software</Typography>
+          <Image src={Logo} width={50} height={30} alt="Logo" />
+          <Typography sx={styles.CompanyName}>Automa Software</Typography>
         </Box>
       </Link>
     </Box>
