@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Box, ButtonBase, Avatar, Typography, Rating } from "@mui/material";
+import { shortenText } from "lib/utils";
 import useEmblaCarousel from "embla-carousel-react";
 
 //Icons
@@ -43,40 +44,56 @@ const Sliders = () => {
     embla.on("select", onSelect);
     onSelect();
   }, [embla, onSelect]);
+
+  // Reinitialize Embla when testimonials are updated
+  useEffect(() => {
+    if (embla) {
+      embla.reInit();
+    }
+  }, [embla, testimonials]);
   return (
     <Box sx={{ mt: "2em" }}>
       <Box className="embla" sx={styles.Embla}>
         <Box className="embla__viewport" ref={viewportRef}>
           <Box className="embla__container" sx={styles.EmblaContainer}>
             {testimonials &&
-              testimonials.map((testimonial, i) => (
-                <Box className="embla__slide" sx={styles.EmblaSlide} key={i}>
-                  <Avatar
-                    alt={testimonial.name}
-                    src={testimonial.avatar}
-                    sx={styles.Avatar}
-                  />
-                  <Box sx={{ mt: "4.5em", mb: "3em" }}>
-                    <Typography variant="h6" component="h6" sx={styles.Title}>
-                      {testimonial.title}
-                    </Typography>
-                    <Rating
-                      name="half-rating-read"
-                      defaultValue={Number(testimonial.star)}
-                      precision={0.5}
-                      readOnly
+              testimonials.map((testimonial, i) => {
+                const review = shortenText(testimonial.review, 150);
+                const title = shortenText(testimonial.title, 50);
+
+                return (
+                  <Box className="embla__slide" sx={styles.EmblaSlide} key={i}>
+                    <Avatar
+                      alt={testimonial.name}
+                      src={testimonial.avatar}
+                      sx={styles.Avatar}
                     />
-                    <Typography
-                      variant="body1"
-                      component="p"
-                      sx={styles.Description}
-                    >
-                      {testimonial.review}
-                    </Typography>
+                    <Box sx={{ mt: "4.5em", mb: "3em" }}>
+                      <Rating
+                        name="half-rating-read"
+                        defaultValue={Number(testimonial.star)}
+                        precision={0.5}
+                        readOnly
+                      />
+                      <Typography
+                        variant="body1"
+                        component="p"
+                        sx={styles.Title}
+                      >
+                        {title}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        component="p"
+                        sx={styles.Description}
+                      >
+                        {review}
+                      </Typography>
+                    </Box>
+                    {/* <ButtonBase sx={styles.Name}>{testimonial.name}</ButtonBase> */}
                   </Box>
-                  <ButtonBase sx={styles.Name}>{testimonial.name}</ButtonBase>
-                </Box>
-              ))}
+                );
+              })}
           </Box>
         </Box>
         <Box sx={styles.Navigation}>
