@@ -49,20 +49,20 @@ const Sliders = () => {
         <Box className="embla__viewport" ref={viewportRef}>
           <Box className="embla__container" sx={styles.EmblaContainer}>
             {testimonials &&
-              testimonials.map((client, i) => (
+              testimonials.map((testimonial, i) => (
                 <Box className="embla__slide" sx={styles.EmblaSlide} key={i}>
                   <Avatar
-                    alt={client.name}
-                    src={client.avatar}
+                    alt={testimonial.name}
+                    src={testimonial.avatar}
                     sx={styles.Avatar}
                   />
                   <Box sx={{ mt: "4.5em", mb: "3em" }}>
                     <Typography variant="h6" component="h6" sx={styles.Title}>
-                      {client.title}
+                      {testimonial.title}
                     </Typography>
                     <Rating
                       name="half-rating-read"
-                      defaultValue={client.star}
+                      defaultValue={Number(testimonial.star)}
                       precision={0.5}
                       readOnly
                     />
@@ -71,10 +71,10 @@ const Sliders = () => {
                       component="p"
                       sx={styles.Description}
                     >
-                      {client.review}
+                      {testimonial.review}
                     </Typography>
                   </Box>
-                  <ButtonBase sx={styles.Name}>{client.name}</ButtonBase>
+                  <ButtonBase sx={styles.Name}>{testimonial.name}</ButtonBase>
                 </Box>
               ))}
           </Box>
