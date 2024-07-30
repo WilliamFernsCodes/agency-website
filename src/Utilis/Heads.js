@@ -1,17 +1,26 @@
-import Head from 'next/head';
+import Head from "next/head";
 
 const Heads = () => {
-    return (
-        <Head>
-            <meta property="og:url" content="https://codestation21.com" />
-            <meta property="og:type" content="website" />
-            <meta property="og:title" content="Code Station21 | Web and Mobile application developing agency" />
-            <meta property="og:description" content="We are web and mobile application developing agency . We use technology like React.js, Next.js, Express.js, Node.js, Restful API, GraphQL, MongoDB, Typrescript, Flutter and almost all javascript framework and libraray. We can solve design and develop applications fully coustomize for you. We provide complete digital space solutions for you." />
-            <title>Code Station21 | Web and Mobile application developing agency</title>
-            <meta name="description" content="We are web and mobile application developing agency . We use technology like React.js, Next.js, Express.js, Node.js, Restful API, GraphQL, MongoDB, Typrescript, Flutter and almost all javascript framework and libraray. We can solve design and develop applications fully coustomize for you. We provide complete digital space solutions for you." />
-            <link rel="shortcut icon" href="/favicon.ico" />
-            <meta name="author" content="Siam Ahnaf" />
-        </Head>
-    );
+  return (
+    <Head>
+      <meta property="og:url" content="agency.williamferns.org" />
+      <meta property="og:type" content="website" />
+      <meta
+        property="og:title"
+        content="Automa Software | Software Development Agency"
+      />
+      <meta
+        property="og:description"
+        content="We are a software development agency, specializing in crafting custom software solutions for our clients. Whether that be full-stack web applications, mobile applications, back-end services or scrapers, we got you covered! Using industry level technologies like React.js, Next.js, Node.js, PostgreSQL, Typrescript, Python and so much more, we are 100% confident that we can help your business."
+      />
+      <title>Automa Software | Software Development Agency</title>
+      <meta
+        name="description"
+        content="We are a software development agency, specializing in crafting custom software solutions for our clients. Whether that be full-stack web applications, mobile applications, back-end services or scrapers, we got you covered! Using industry level technologies like React.js, Next.js, Node.js, PostgreSQL, Typrescript, Python and so much more, we are 100% confident that we can help your business."
+      />
+      <link rel="shortcut icon" href="/favicon.svg" />
+      <meta name="author" content="William Ferns" />
+    </Head>
+  );
 };
 export default Heads;
