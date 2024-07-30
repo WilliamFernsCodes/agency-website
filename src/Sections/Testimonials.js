@@ -12,7 +12,7 @@ import styles from "Styles/Testimonials/Testimonials.styles";
 const Testimonials = () => {
   return (
     <Box component="section" sx={styles.Container} id="testimonials">
-      <SectionHeading value1="Testimonials" border={true} />
+      <SectionHeading value1="Testimonials" border={true} center={false} />
       <Slider />
     </Box>
   );

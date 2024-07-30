@@ -15,7 +15,7 @@ const Contact = () => {
             <SectionHeading
                 value1="Do You Have Any Projects"
                 value2="Plz Say Hello"
-                border={true}
+                center={true}
             />
             <Form />
         </Container>

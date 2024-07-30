@@ -2,26 +2,9 @@ const styles = {
   Container: {
     overflow: "hidden",
     py: "5em",
-    position: "relative",
-    "&:after": {
-      content: '""',
-      background: (theme) =>
-        theme.palette.primary.ProjectListingContainerGradient,
-      width: "100%",
-      height: "50em",
-      padding: " ",
-      position: "absolute",
-      top: "0",
-      left: "0",
-      zIndex: "-2",
-    },
-  },
-  Particle: {
-    position: "absolute",
-    top: "5%",
-    width: "90%",
-    height: "40em",
-    zIndex: "-1",
+    // background: (theme) => theme.palette.primary.ProjectListingContainerGradient,
+    width: "100%",
+    // height: "50em",
   },
   ButtonGroup: {
     "& .MuiTabs-flexContainer": {

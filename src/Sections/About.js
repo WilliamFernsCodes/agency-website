@@ -16,7 +16,7 @@ const About = () => {
       sx={{ pt: "5em" }}
       id="about"
     >
-      <SectionHeading value1="Our Services" border={true} />
+      <SectionHeading value1="Our Services" center={true} />
       <Solution />
       <ClientSatisfactionSection />
     </Container>
