@@ -1,28 +1,26 @@
 // Icon Image
 import Ui from "Assets/about/ui.png";
 import Web from "Assets/about/web.png";
-import App from "Assets/about/app.png";
-import Graphic from "Assets/about/graphic.png";
+import Backend from "Assets/about/backend.png";
 
-export default [
-    {
-        title: "UI/UX",
-        description: "Start with listening to your idea, research, make a wireframe, build a prototype, finalizing the UI/UX.",
-        icon: Ui
-    },
-    {
-        title: "Web Development",
-        description: "Create a highspeed, modern and responsive website and web application for you.",
-        icon: Web
-    },
-    {
-        title: "App Development",
-        description: "Both Andriod and ios are developing here. We offer a cross-platform solution that is easy to use and maintain.",
-        icon: App
-    },
-    {
-        title: "Graphic Design",
-        description: "We provide all kinds of designs like logos, flyers, visiting cards, social media, etc.",
-        icon: Graphic
-    }
-]
+const softwareSolutionsData = [
+  {
+    title: "Web Development",
+    description:
+      "High-performance, reliable, and modern web solutions tailored to your needs.",
+    icon: Web,
+  },
+  {
+    title: "Backend Development",
+    description:
+      "Expert API creation, data scraping, and AI integration services.",
+    icon: Backend,
+  },
+  {
+    title: "UI/UX Design",
+    description: "Access to top designers for clean, user-friendly interfaces.",
+    icon: Ui,
+  },
+];
+
+export default softwareSolutionsData;

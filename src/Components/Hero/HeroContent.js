@@ -2,36 +2,28 @@ import { Box, Typography, ButtonBase } from "@mui/material";
 import { Link } from "react-scroll";
 
 // Icons
-import ArrowForwardTwoToneIcon from '@mui/icons-material/ArrowForwardTwoTone';
+import ArrowForwardTwoToneIcon from "@mui/icons-material/ArrowForwardTwoTone";
 
 //Styles
 import styles from "Styles/Hero/HeroContent.styles";
 
 const HeroContent = () => {
-    return (
-        <Box sx={styles.Container}>
-            <Typography variant="h2" component="h2" sx={styles.Title}>
-                We are <br />
-                Code Station21
-            </Typography>
-            <Typography variant="h6" component="h6" sx={styles.Slogan}>
-                Your Dream, We Build
-            </Typography>
-            <Typography variant="body1" component="p" sx={styles.Description}>
-                Where an idea turns into a project. Help your startups, business, and ideas to grow more and solve the problem with the power of code.
-            </Typography>
-            <Link
-                to="portfolio"
-                spy={true}
-                smooth={true}
-                duration={500}
-            >
-                <ButtonBase sx={styles.Button}>
-                    See Projects
-                    <ArrowForwardTwoToneIcon />
-                </ButtonBase>
-            </Link>
-        </Box>
-    );
+  return (
+    <Box sx={styles.Container}>
+      <Typography variant="h2" component="h2" sx={styles.Title}>
+        Partner with Experts, Achieve Excellence
+      </Typography>
+      <Typography variant="p" component="p" sx={styles.Slogan}>
+        Dealing with unreliable developers? Our experienced team delivers
+        consistent, top-notch results that propel your business forward.
+      </Typography>
+      <Link to="portfolio" spy={true} smooth={true} duration={500}>
+        <ButtonBase sx={styles.Button}>
+          See Testimonials
+          <ArrowForwardTwoToneIcon />
+        </ButtonBase>
+      </Link>
+    </Box>
+  );
 };
 export default HeroContent;

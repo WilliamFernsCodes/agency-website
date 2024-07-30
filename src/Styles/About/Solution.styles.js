@@ -1,21 +1,32 @@
 const styles = {
-    Title: {
-        mt: "20px",
-        mb: "8px",
-        fontWeight: 800,
-    },
-    Description: {
-        fontSize: "15px"
-    },
-    Image: {
-        width: {
-            md: "65%",
-            smd: "60%",
-            lsm: "50%",
-            sm: "60%",
-            xxs: "65%"
-        }
-    }
+  Container: {
+    mt: "2em",
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "20px",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  SolutionElement: {
+    maxWidth: "300px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  Title: {
+    // mt: "20px",
+    // mb: "8px",
+    fontWeight: 800,
+  },
+  Description: {
+    fontSize: "15px",
+  },
+  Image: {
+    width: "200px",
+    height: "200px",
+  },
 };
 
 export default styles;

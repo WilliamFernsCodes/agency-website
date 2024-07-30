@@ -1,5 +1,5 @@
 const styles = {
-  SeeProjectBtn: {
+  BookNowBtn: {
     backgroundColor: "primary.main",
     color: "background.default",
     p: "12px 18px",

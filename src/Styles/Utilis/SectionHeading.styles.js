@@ -1,19 +1,24 @@
 const styles = {
-    Heading: {
-        width: "max-content",
-        fontWeight: 700,
-        letterSpacing: "1px",
-        fontSize: {
-            sm: "1.5rem",
-            xxs: "1.2rem"
-        }
+  Heading: {
+    fontWeight: 700,
+    lineHeight: {
+      xxs: "115%",
+      lg: "100%",
     },
-    Divider: {
-        mx: "24%",
-        borderWidth: "2px",
-        borderColor: "primary.main",
-        mt: "5px"
-    }
+    fontSize: {
+      sm: "1.7rem",
+      xxs: "1.3rem",
+    },
+    mb: { xxs: "0px", md: "5px" },
+    width: "max-content",
+    letterSpacing: "1px",
+  },
+  Divider: {
+    borderWidth: "2px",
+    borderColor: "primary.main",
+    width: "100%",
+    mt: "5px",
+  },
 };
 
 export default styles;
