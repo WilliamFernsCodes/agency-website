@@ -6,7 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "Utilis/Icons";
 
 //Data
-import Testimonials from "Data/Testimonials/Testimonials.data";
+import getTestimonials from "Data/Testimonials/Testimonials.data";
 
 //Styles
 import styles from "Styles/Testimonials/Slider.styles";
@@ -18,6 +18,7 @@ const Sliders = () => {
   });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+  const [testimonials, setTestimonials] = useState([]);
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
@@ -28,6 +29,13 @@ const Sliders = () => {
   }, [embla]);
 
   useEffect(() => {
+    const setTestimonialsData = async () => {
+      const testimonialsData = await getTestimonials();
+      setTestimonials(testimonialsData);
+    };
+    setTestimonialsData();
+  }, []);
+  useEffect(() => {
     if (!embla) return;
     embla.on("select", onSelect);
     onSelect();
@@ -37,8 +45,8 @@ const Sliders = () => {
       <Box className="embla" sx={styles.Embla}>
         <Box className="embla__viewport" ref={viewportRef}>
           <Box className="embla__container" sx={styles.EmblaContainer}>
-            {Testimonials &&
-              Testimonials.map((client, i) => (
+            {testimonials &&
+              testimonials.map((client, i) => (
                 <Box className="embla__slide" sx={styles.EmblaSlide} key={i}>
                   <Avatar
                     alt={client.name}
