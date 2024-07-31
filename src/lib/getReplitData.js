@@ -153,7 +153,7 @@ const getReplitData = async (users) => {
             calculateBountyRating(listing) >= 4 &&
             listing.bountyHunterReview.reviewText,
         )
-        .sort((a, b) => a.solverPayout - b.solverPayout)
+        .sort((a, b) => b.solverPayout - a.solverPayout)
         .map((listing) => {
           const poster = listing.user;
           const totalStars = calculateBountyRating(listing);

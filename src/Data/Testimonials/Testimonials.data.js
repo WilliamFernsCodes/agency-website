@@ -7,7 +7,7 @@ import bountyHunters from "Data/Team/bountyHunters";
 //     "They Provide great quality service and their behavior is so much helpful.",
 //   avatar: Testimonial,
 // },
-const getTestimonials = async () => {
+const getTestimonialsData = async () => {
   let data;
   try {
     const response = await fetch("/api/getReplitData", {
@@ -24,4 +24,4 @@ const getTestimonials = async () => {
   }
   return data;
 };
-export default getTestimonials;
+export default getTestimonialsData;

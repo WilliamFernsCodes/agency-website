@@ -16,7 +16,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "Utilis/Icons";
 
 //Data
-import getTestimonials from "Data/Testimonials/Testimonials.data";
+import getTestimonialsData from "Data/Testimonials/Testimonials.data";
 
 //Styles
 import styles from "Styles/Testimonials/Slider.styles";
@@ -40,11 +40,11 @@ const Sliders = () => {
 
   useEffect(() => {
     const setTestimonialsData = async () => {
-      const testimonialsData = await getTestimonials();
+      const testimonialsData = await getTestimonialsData();
       const allTestimonials = testimonialsData
         .map((user) => user.userBounties)
         .flat();
-      setTestimonials(allTestimonials);
+      setTestimonials(allTestimonials.sort((a, b) => b.amount - a.amount));
     };
     setTestimonialsData();
   }, []);
@@ -67,7 +67,7 @@ const Sliders = () => {
           <Box className="embla__container" sx={styles.EmblaContainer}>
             {testimonials &&
               testimonials.map((testimonial, i) => {
-                const review = shortenText(testimonial.review, 150);
+                const review = shortenText(testimonial.review, 100);
                 const title = shortenText(testimonial.title, 50);
                 const name = testimonial.name;
                 const backgroundColor = "0D8ABC";
@@ -89,53 +89,42 @@ const Sliders = () => {
                       readOnly
                     />
                     <Box sx={styles.QuoteContainer}>
-                      <Typography
-                        variant="body1"
-                        component="p"
-                        // sx={styles.Description}
-                      >
+                      <Typography variant="body1" component="p">
                         {review}
                       </Typography>
                     </Box>
-                    <Avatar alt={name} src={avatarURL} sx={styles.Avatar} />
-                    <Box sx={{ mt: "4.5em" }}>
-                      <Typography
-                        variant="body1"
-                        component="p"
-                        sx={styles.Title}
-                      >
-                        {title}
-                      </Typography>
-                    </Box>
-                    <Box
-                      sx={{
-                        width: "100%",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Box>
-                        <Typography>{`@${name}`}</Typography>
-                        <Typography>{`${testimonial.amount}$`}</Typography>
-                      </Box>
-                      {"link" in testimonial && (
-                        <Link
-                          href={testimonial.link}
-                          target="_blank"
-                          sx={{
-                            color: "blue",
-                            textDecoration: "none",
-                            fontFamily: "Poppins",
-                            fontWeight: "600",
-                            // make it italic
-                            fontStyle: "italic",
-                          }}
+                    <Box sx={styles.PosterContainer}>
+                      <Box sx={styles.PosterInfo}>
+                        <Typography className="poster-name" component="p">
+                          {name}
+                        </Typography>
+                        <Typography
+                          component="p"
+                          className="listing-information"
                         >
-                          View Listing
-                        </Link>
-                      )}
+                          {`${testimonial.amount}$, '${title}'`}
+                        </Typography>
+                      </Box>
+                      <Box sx={styles.AvatarContainer}>
+                        <Avatar alt={name} src={avatarURL} className="avatar" />
+                      </Box>
                     </Box>
+                    {"link" in testimonial && (
+                      <Link
+                        href={testimonial.link}
+                        target="_blank"
+                        sx={{
+                          color: "blue",
+                          textDecoration: "none",
+                          fontFamily: "Poppins",
+                          fontWeight: "600",
+                          // make it italic
+                          fontStyle: "italic",
+                        }}
+                      >
+                        View Listing
+                      </Link>
+                    )}
                     {/* <ButtonBase sx={styles.Name}>{testimonial.name}</ButtonBase> */}
                   </Box>
                 );

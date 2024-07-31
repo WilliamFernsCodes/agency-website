@@ -41,24 +41,58 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height: "145px",
+    minHeight: "125px",
+    height: "fit-content",
+    py: "25px",
     borderLeft: "5px solid #FF4F3E",
     // style the "p" tag:
     "& p": {
       fontFamily: "Poppins",
       fontWeight: "600",
-      fontSize: { md: "20px" },
+      width: "90%",
+      fontSize: { md: "15px" },
       fontStyle: "italic",
     },
   },
-  Avatar: {
-    width: 120,
-    height: 120,
-    border: (theme) => `15px solid ${theme.palette.background.default}`,
-    boxShadow: (theme) =>
-      `3px 4px 3px ${theme.palette.primary.box_shadow_client}`,
+  PosterContainer: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "20px",
   },
-  Title: {
+  PosterInfo: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    "& p": {
+      textAlign: "left",
+      width: "fit-content",
+    },
+    "& .poster-name": {
+      fontSize: "20px",
+      fontWeight: "600",
+      fontStyle: "italic",
+      "&:before": {
+        content: "'@'",
+        color: "#0D8ABC",
+      },
+    },
+    "& .listing-information": {
+      fontSize: "13px",
+      // set fontweight to medium
+      fontWeight: "500",
+      marginLeft: "15px",
+    },
+  },
+  AvatarContainer: {
+    padding: "10px",
+    "& .avatar": {
+      width: "65px",
+      height: "65px",
+    },
+  },
+  ListingTask: {
     textTransform: "uppercase",
     fontWeight: "600",
     mt: "12px",
