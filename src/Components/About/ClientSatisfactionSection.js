@@ -35,8 +35,22 @@ const ClientSatisfactionSection = () => {
             className="sdjh"
             sx={styles.Description}
           >
-            Their strong technical background has led to them creating Automa
-            Software, an agency that offers high quality software solutions.
+            Simon is the <b>#1 Freelance Software Developer</b> on Replit. Here
+            are links to their freelance profiles:{" "}
+            <a
+              href="https://replit.com/@AdonisCodes"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Simon,
+            </a>{" "}
+            <a
+              target="_blank"
+              href="https://replit.com/@WilliamFerns1"
+              rel="noreferrer"
+            >
+              William
+            </a>{" "}
           </Typography>
         </Box>
         <Box sx={{ my: "28px" }}>

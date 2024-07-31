@@ -32,7 +32,7 @@ const getListingsStats = async () => {
 
   const testimonialStats = [
     {
-      title: "Projects Done",
+      title: "Jobs Done",
       total: stats["totalProjectsCompleted"].toString(),
       star: 0,
     },

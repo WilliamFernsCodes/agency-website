@@ -56,16 +56,6 @@ const ListingsStats = () => {
                 <Typography variant="body1" component="p" sx={styles.StatTitle}>
                   {stat.title}
                 </Typography>
-                {stat.star > 0 && (
-                  <Rating
-                    name="half-rating-read"
-                    defaultValue={stat.star}
-                    precision={0.5}
-                    readOnly
-                    size="small"
-                    sx={{ mt: "5px" }}
-                  />
-                )}
               </Box>
             ))}
         </Box>
