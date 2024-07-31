@@ -7,4 +7,12 @@ const shortenText = (input, maxLength) => {
   }
 };
 
-export { shortenText };
+function capitalizeFirstLetter(string) {
+  if (!string) return string; // Handle empty strings
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export {
+  shortenText,
+  capitalizeFirstLetter,
+};

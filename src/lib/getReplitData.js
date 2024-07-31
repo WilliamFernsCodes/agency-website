@@ -114,8 +114,8 @@ const getReplitData = async (users) => {
         console.error("Error making POST request:", e);
         return [];
       }
-      const items = data["data"]["bountySearch"]["items"];
-      if (items.length === 0) {
+      const bountiesListings = data["data"]["bountySearch"]["items"];
+      if (bountiesListings.length === 0) {
         break;
       } else {
         after = after + 10;
@@ -130,7 +130,7 @@ const getReplitData = async (users) => {
       //   avatar: Testimonial,
       // },
       //
-      const calculateBountyRating = (item) => {
+      const calculateBountyRating = (listing) => {
         const ratingsKeys = [
           "communicationRating",
           "qualityRating",
@@ -138,32 +138,34 @@ const getReplitData = async (users) => {
         ];
         const totalStars = Number(
           ratingsKeys.reduce(
-            (acc, key) => acc + item.bountyHunterReview[key],
+            (acc, key) => acc + listing.bountyHunterReview[key],
             0,
           ) / ratingsKeys.length,
         ).toFixed(0);
         return totalStars;
       };
-      const completedWithReviewsBounties = items
+      const completedWithReviewsBounties = bountiesListings
         .filter(
-          (item) =>
-            item.status === "completed" &&
-            item.bountyHunterReview &&
-            item.bountyHunterReview &&
-            calculateBountyRating(item) >= 4 &&
-            item.bountyHunterReview.reviewText,
+          (listing) =>
+            listing.status === "completed" &&
+            listing.bountyHunterReview &&
+            listing.bountyHunterReview &&
+            calculateBountyRating(listing) >= 4 &&
+            listing.bountyHunterReview.reviewText,
         )
         .sort((a, b) => a.solverPayout - b.solverPayout)
-        .map((item) => {
-          const poster = item.user;
-          const totalStars = calculateBountyRating(item);
+        .map((listing) => {
+          const poster = listing.user;
+          const totalStars = calculateBountyRating(listing);
 
           return {
-            title: item.title,
+            title: listing.title,
             name: poster.username,
             star: totalStars,
-            review: item.bountyHunterReview.reviewText,
+            review: listing.bountyHunterReview.reviewText,
             avatarURL: poster.image,
+            link: `https://replit.com/bounties/@${poster.username}/${listing.slug}`,
+            amount: Math.floor(listing.solverPayout / 100),
           };
         });
       allBountiesData = [...allBountiesData, ...completedWithReviewsBounties];

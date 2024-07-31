@@ -19,7 +19,7 @@ const Blog = () => {
       <SectionHeading
         value1="Every Single Update"
         value2="News & Blogs"
-        center={false}
+        border={false}
       />
       <SingleBlog />
       <Company />

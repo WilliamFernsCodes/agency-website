@@ -1,6 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
-import { Box, ButtonBase, Avatar, Typography, Rating } from "@mui/material";
-import { shortenText } from "lib/utils";
+import {
+  Link,
+  Box,
+  ButtonBase,
+  Avatar,
+  Typography,
+  Rating,
+} from "@mui/material";
+
+import { capitalizeFirstLetter, shortenText } from "lib/utils";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import useEmblaCarousel from "embla-carousel-react";
 
 //Icons
@@ -60,21 +69,36 @@ const Sliders = () => {
               testimonials.map((testimonial, i) => {
                 const review = shortenText(testimonial.review, 150);
                 const title = shortenText(testimonial.title, 50);
+                const name = testimonial.name;
+                const backgroundColor = "0D8ABC";
+                const textColor = "fff";
+                const avatarURL = testimonial.avatarURL.endsWith(
+                  "?d=blank&s=256",
+                )
+                  ? `https://ui-avatars.com/api/?name=${capitalizeFirstLetter(name.slice(0, 3))}+${capitalizeFirstLetter(name.slice(1, 3))}&background=${backgroundColor}&color=${textColor}`
+                  : testimonial.avatarURL;
+                console.log(`Avatar URL: ${avatarURL}`);
 
                 return (
                   <Box className="embla__slide" sx={styles.EmblaSlide} key={i}>
-                    <Avatar
-                      alt={testimonial.name}
-                      src={testimonial.avatar}
-                      sx={styles.Avatar}
+                    <Rating
+                      name="half-rating-read"
+                      size="large"
+                      defaultValue={Number(testimonial.star)}
+                      precision={0.5}
+                      readOnly
                     />
-                    <Box sx={{ mt: "4.5em", mb: "3em" }}>
-                      <Rating
-                        name="half-rating-read"
-                        defaultValue={Number(testimonial.star)}
-                        precision={0.5}
-                        readOnly
-                      />
+                    <Box sx={styles.QuoteContainer}>
+                      <Typography
+                        variant="body1"
+                        component="p"
+                        // sx={styles.Description}
+                      >
+                        {review}
+                      </Typography>
+                    </Box>
+                    <Avatar alt={name} src={avatarURL} sx={styles.Avatar} />
+                    <Box sx={{ mt: "4.5em" }}>
                       <Typography
                         variant="body1"
                         component="p"
@@ -82,13 +106,35 @@ const Sliders = () => {
                       >
                         {title}
                       </Typography>
-                      <Typography
-                        variant="body1"
-                        component="p"
-                        sx={styles.Description}
-                      >
-                        {review}
-                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Box>
+                        <Typography>{`@${name}`}</Typography>
+                        <Typography>{`${testimonial.amount}$`}</Typography>
+                      </Box>
+                      {"link" in testimonial && (
+                        <Link
+                          href={testimonial.link}
+                          target="_blank"
+                          sx={{
+                            color: "blue",
+                            textDecoration: "none",
+                            fontFamily: "Poppins",
+                            fontWeight: "600",
+                            // make it italic
+                            fontStyle: "italic",
+                          }}
+                        >
+                          View Listing
+                        </Link>
+                      )}
                     </Box>
                     {/* <ButtonBase sx={styles.Name}>{testimonial.name}</ButtonBase> */}
                   </Box>

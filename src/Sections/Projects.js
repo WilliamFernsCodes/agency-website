@@ -44,7 +44,7 @@ const Projects = () => {
       sx={styles.Container}
       id="projects"
     >
-      <SectionHeading value1="Our Projects" center={false} />
+      <SectionHeading value1="Our Projects" border={false} />
       <TabContext value={value}>
         <Box sx={{ mt: "3em" }}>
           <TabList

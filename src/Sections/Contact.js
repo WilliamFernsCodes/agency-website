@@ -10,15 +10,21 @@ import Form from "Components/Contact/Form";
 import styles from "Styles/Contact/Contact.styles";
 
 const Contact = () => {
-    return (
-        <Container maxWidth={false} disableGutters as="section" sx={styles.Container} id="contact">
-            <SectionHeading
-                value1="Do You Have Any Projects"
-                value2="Plz Say Hello"
-                center={true}
-            />
-            <Form />
-        </Container>
-    );
+  return (
+    <Container
+      maxWidth={false}
+      disableGutters
+      as="section"
+      sx={styles.Container}
+      id="contact"
+    >
+      <SectionHeading
+        value1="Do You Have Any Projects"
+        value2="Plz Say Hello"
+        border={true}
+      />
+      <Form />
+    </Container>
+  );
 };
 export default Contact;
