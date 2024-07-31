@@ -3,8 +3,8 @@ const handler = async (req, res) => {
   if (req.method != "POST") {
     res.status(405).json({ message: "Method Not Allowed. GET Only allowed" });
   }
-  const users = req.body;
-  const result = await getReplitData(users);
+  const parameters = req.body;
+  const result = await getReplitData(parameters);
   res.status(200).json(result);
 };
 

@@ -3,7 +3,6 @@ const styles = {
     backgroundColor: "primary.divider",
     mt: "2em",
     mb: "3em",
-    height: "3px",
   },
   AwardNumber: {
     fontWeight: 600,

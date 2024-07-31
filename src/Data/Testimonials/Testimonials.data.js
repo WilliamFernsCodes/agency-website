@@ -15,7 +15,7 @@ const getTestimonialsData = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(bountyHunters),
+      body: JSON.stringify({ users: bountyHunters, getUserInfo: false }),
     });
     data = await response.json();
   } catch (error) {
