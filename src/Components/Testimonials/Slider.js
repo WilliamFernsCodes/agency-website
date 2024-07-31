@@ -67,7 +67,7 @@ const Sliders = () => {
           <Box className="embla__container" sx={styles.EmblaContainer}>
             {testimonials &&
               testimonials.map((testimonial, i) => {
-                const review = shortenText(testimonial.review, 100);
+                const review = shortenText(testimonial.review, 70);
                 const title = shortenText(testimonial.title, 50);
                 const name = testimonial.name;
                 const backgroundColor = "0D8ABC";
@@ -113,19 +113,11 @@ const Sliders = () => {
                       <Link
                         href={testimonial.link}
                         target="_blank"
-                        sx={{
-                          color: "blue",
-                          textDecoration: "none",
-                          fontFamily: "Poppins",
-                          fontWeight: "600",
-                          // make it italic
-                          fontStyle: "italic",
-                        }}
+                        sx={styles.ViewListingText}
                       >
                         View Listing
                       </Link>
                     )}
-                    {/* <ButtonBase sx={styles.Name}>{testimonial.name}</ButtonBase> */}
                   </Box>
                 );
               })}
