@@ -16,6 +16,7 @@ const getListingsStats = async () => {
   const stats = {
     totalProjectsCompleted: 0,
     totalSatisfiedClients: 0,
+    totalEarned: 0,
   };
 
   // averageRating: stats["averageRating"],
@@ -26,6 +27,7 @@ const getListingsStats = async () => {
     const userData = user["userInfo"];
     stats["totalSatisfiedClients"] += userData["totalReviews"];
     stats["totalProjectsCompleted"] += userData["completedBounties"];
+    stats["totalEarned"] += userData["approximateCyclesEarned"] / 100;
   }
 
   const testimonialStats = [
@@ -38,6 +40,10 @@ const getListingsStats = async () => {
       title: "Satisfied Clients",
       total: stats["totalSatisfiedClients"].toString(),
       star: 5,
+    },
+    {
+      title: "Total Earnings",
+      total: stats["totalEarned"].toString(),
     },
   ];
 

@@ -1,7 +1,8 @@
-import { Box, Grid, Stack, Typography, Divider, Rating } from "@mui/material";
+import { Box, Stack, Typography, Divider, Rating } from "@mui/material";
 import { useState, useEffect } from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
+import bountyHunters from "Data/Team/bountyHunters";
 
 //Data
 import getListingsData from "Data/Skills/ListingsStats.data";
@@ -26,74 +27,67 @@ const ListingsStats = () => {
     getStatsData();
   }, []);
   return (
-    <Box sx={{ backgroundColor: "#fff" }}>
+    <Box sx={styles.StatsContainer}>
       <Divider sx={styles.Divider} />
-      <Grid container spacing={2} sx={{ alignItems: "center" }}>
-        <Grid item md={8} xxs={12}>
-          <Box>
-            <Grid container spacing={2}>
-              {allListingsStatsData &&
-                allListingsStatsData.map((stat, i) => (
-                  <Grid item xxs={4} key={i}>
-                    <Box sx={{ textAlign: "center" }}>
-                      <Typography
-                        variant="h4"
-                        component="h4"
-                        sx={styles.StatNumber}
-                      >
-                        <Stack
-                          direction="row"
-                          sx={{ justifyContent: "center" }}
-                        >
-                          <VisibilitySensor
-                            onChange={onVisibilityChange}
-                            offset={{ top: -50 }}
-                            delayedCall
-                          >
-                            <CountUp end={view ? stat.total : 0} />
-                          </VisibilitySensor>
-                          <Typography variant="h4" component="h4">
-                            +
-                          </Typography>
-                        </Stack>
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        component="p"
-                        sx={styles.StatTitle}
-                      >
-                        {stat.title}
-                      </Typography>
-                      {stat.star > 0 && (
-                        <Rating
-                          name="half-rating-read"
-                          defaultValue={stat.star}
-                          precision={0.5}
-                          readOnly
-                          size="small"
-                          sx={{ mt: "5px" }}
-                        />
-                      )}
-                    </Box>
-                  </Grid>
-                ))}
-            </Grid>
-          </Box>
-        </Grid>
-        <Grid
-          item
-          md={4}
-          xxs={0}
-          sx={{ display: { md: "unset", xxs: "none" } }}
-        >
-          <Box>
-            <Typography variant="h5" component="h5" sx={styles.Title}>
-              Great Achievements <br />
-              In Our Career
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
+      <Box sx={styles.Stats}>
+        <Box sx={styles.CountUpsParentContainer}>
+          {allListingsStatsData &&
+            allListingsStatsData.map((stat, i) => (
+              <Box sx={styles.CountUpContainer} key={i}>
+                <Typography variant="h4" component="h4" sx={styles.StatNumber}>
+                  <Stack direction="row" sx={{ justifyContent: "center" }}>
+                    <VisibilitySensor
+                      onChange={onVisibilityChange}
+                      offset={{ top: -50 }}
+                      delayedCall
+                    >
+                      <CountUp end={view ? stat.total : 0} />
+                    </VisibilitySensor>
+                    {
+                      // If stat total is really big, it is the totalEarned stat
+                      Number(stat.total) > 5000 && (
+                        <Typography variant="h4" component="h4">
+                          $
+                        </Typography>
+                      )
+                    }
+                  </Stack>
+                </Typography>
+                <Typography variant="body1" component="p" sx={styles.StatTitle}>
+                  {stat.title}
+                </Typography>
+                {stat.star > 0 && (
+                  <Rating
+                    name="half-rating-read"
+                    defaultValue={stat.star}
+                    precision={0.5}
+                    readOnly
+                    size="small"
+                    sx={{ mt: "5px" }}
+                  />
+                )}
+              </Box>
+            ))}
+        </Box>
+        {/**/}
+        {/* <Box sx={styles.ProfilesLinksContainer}> */}
+        {/*   <Typography variant="h5" component="h5" sx={styles.Title}> */}
+        {/*     Our Freelancing Profiles */}
+        {/*   </Typography> */}
+        {/*   <Box sx={styles.ProfileLinks}> */}
+        {/*     {bountyHunters.map((hunter, index) => ( */}
+        {/*       <a */}
+        {/*         href={`https://replit.com/@${hunter.username}`} */}
+        {/*         key={index} */}
+        {/*         target="_blank" */}
+        {/*         rel="noreferrer" */}
+        {/*       > */}
+        {/*         {hunter.username} */}
+        {/*       </a> */}
+        {/*     ))} */}
+        {/*   </Box> */}
+        {/* </Box> */}
+      </Box>
       <Divider sx={styles.Divider} />
     </Box>
   );
