@@ -18,6 +18,7 @@ const AwardStats = () => {
   };
   return (
     <Box>
+      <Divider sx={styles.Divider} />
       <Grid container spacing={2} sx={{ alignItems: "center" }}>
         <Grid item md={8} xxs={12}>
           <Box>
@@ -84,7 +85,6 @@ const AwardStats = () => {
           </Box>
         </Grid>
       </Grid>
-      <Divider sx={styles.Divider} />
     </Box>
   );
 };
