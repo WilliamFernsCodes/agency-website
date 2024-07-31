@@ -1,7 +1,9 @@
-export default {
-    title1: "Creative & Professional",
-    title2: "Skills Experience",
-    description: "We are a remote developer agency based in Bangladesh, working with clients around the world. As passionate designers & developer, we love building website, mobile app and UI/UX that are easy to use.",
-    btnText: "Get Any Project",
-    btnUrl: "/"
-}
+const data = {
+  title1: "Complete Management & Development Solutions",
+  description:
+    "No tech background needed. We simplify everything—recruiting talent, project planning, and team management. Invest in your business, and we'll handle the rest. Simple as that.",
+  btnText: "Book a Free Consultation",
+  btnUrl: "https://calendly.com/williamferns/30-min-meeting",
+};
+
+export default data;

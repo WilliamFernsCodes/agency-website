@@ -102,7 +102,8 @@ const Sliders = () => {
                           component="p"
                           className="listing-information"
                         >
-                          {`${testimonial.amount}$, '${title}'`}
+                          <span className="amount">{testimonial.amount}$</span>
+                          {` - '${title}'`}
                         </Typography>
                       </Box>
                       <Box sx={styles.AvatarContainer}>

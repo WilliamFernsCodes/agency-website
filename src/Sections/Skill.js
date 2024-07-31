@@ -1,14 +1,19 @@
 import { Container, Grid } from "@mui/material";
 
 //Components
-import { Experience, Progress, AwardStats } from "Components/Skills";
+import { Experience, Progress } from "Components/Skills";
 
 const Skill = () => {
   return (
     <Container
       maxWidth={false}
       disableGutters
-      sx={{ pt: { sm: "4em", xxs: "0em" }, pb: "5em" }}
+      sx={{
+        my: {
+          sm: "4em",
+          xxs: "0em",
+        },
+      }}
       as="section"
     >
       <Grid container spacing={3}>
@@ -19,7 +24,6 @@ const Skill = () => {
           <Progress />
         </Grid>
       </Grid>
-      <AwardStats />
     </Container>
   );
 };

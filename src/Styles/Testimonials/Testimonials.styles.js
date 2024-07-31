@@ -1,8 +1,8 @@
 const styles = {
   Container: {
-    py: "5em",
+    pt: "5em",
     background: (theme) => theme.palette.primary.HeroGradient,
-    // backgroundColor: "lightblue",
+    backgroundColor: "lightblue",
   },
 };
 

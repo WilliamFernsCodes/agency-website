@@ -82,6 +82,10 @@ const styles = {
       fontWeight: "500",
       marginLeft: "15px",
     },
+    "& .amount": {
+      fontSize: { xxs: "12px", md: "15px" },
+      fontWeight: "600",
+    },
   },
   AvatarContainer: {
     padding: "10px",

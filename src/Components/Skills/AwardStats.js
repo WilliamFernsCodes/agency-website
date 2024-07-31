@@ -17,7 +17,7 @@ const AwardStats = () => {
     }
   };
   return (
-    <Box>
+    <Box sx={{ backgroundColor: "#fff" }}>
       <Divider sx={styles.Divider} />
       <Grid container spacing={2} sx={{ alignItems: "center" }}>
         <Grid item md={8} xxs={12}>
@@ -85,6 +85,7 @@ const AwardStats = () => {
           </Box>
         </Grid>
       </Grid>
+      <Divider sx={styles.Divider} />
     </Box>
   );
 };
