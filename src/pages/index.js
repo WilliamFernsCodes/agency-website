@@ -8,7 +8,7 @@ import {
   Hero,
   About,
   Projects,
-  Skill,
+  Skills,
   Testimonials,
   Blog,
   Contact,
@@ -22,7 +22,7 @@ const index = () => {
       <Header />
       <Hero />
       <About />
-      <Skill />
+      <Skills />
       <Testimonials />
       <Projects />
       <Blog />

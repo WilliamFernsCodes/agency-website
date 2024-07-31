@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Hero from "./Hero";
 import Projects from "./Projects";
-import Skill from "./Skill";
+import Skills from "./Skills";
 
 export {
   About,
@@ -17,5 +17,5 @@ export {
   Header,
   Hero,
   Projects,
-  Skill,
+  Skills,
 };

@@ -3,7 +3,7 @@ import { Container, Grid } from "@mui/material";
 //Components
 import { Experience, Progress } from "Components/Skills";
 
-const Skill = () => {
+const Skills = () => {
   return (
     <Container
       maxWidth={false}
@@ -27,4 +27,4 @@ const Skill = () => {
     </Container>
   );
 };
-export default Skill;
+export default Skills;

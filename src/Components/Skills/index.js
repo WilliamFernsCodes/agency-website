@@ -1,5 +1,5 @@
-import AwardStats from "./AwardStats";
+import ListingsStats from "./ListingsStats.js";
 import Experience from "./Experience";
 import Progress from "./Progress";
 
-export { AwardStats, Experience, Progress };
+export { ListingsStats, Experience, Progress };

@@ -5,10 +5,10 @@ import Link from "next/link";
 import ArrowForwardTwoToneIcon from "@mui/icons-material/ArrowForwardTwoTone";
 
 //Data
-import Experiences from "Data/Skill/Experience.data";
+import Experiences from "Data/Skills/Experience.data";
 
 //Styles
-import styles from "Styles/Skill/Experience.styles";
+import styles from "Styles/Skills/Experience.styles";
 
 const Experience = () => {
   return (

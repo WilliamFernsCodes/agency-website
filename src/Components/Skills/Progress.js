@@ -2,10 +2,10 @@ import { Box, Stack, Typography, LinearProgress } from "@mui/material";
 import NumberCounter from "number-counter";
 
 // Data
-import Progresses from "Data/Skill/Progress.data";
+import Progresses from "Data/Skills/Progress.data";
 
 //Styles
-import styles from "Styles/Skill/Progress.styles";
+import styles from "Styles/Skills/Progress.styles";
 
 const Progress = () => {
   return (

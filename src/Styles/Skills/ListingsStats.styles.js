@@ -4,10 +4,10 @@ const styles = {
     mt: "2em",
     mb: "3em",
   },
-  AwardNumber: {
+  StatNumber: {
     fontWeight: 600,
   },
-  AwardTitle: {
+  StatTitle: {
     fontSize: "15px",
     fontWeight: 500,
     mt: "5px",

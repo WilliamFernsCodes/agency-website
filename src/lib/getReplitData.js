@@ -74,8 +74,9 @@ const getReplitData = async ({
         const bountyInfo = data["data"]["user"]["bountyInfo"];
         const stats = bountyInfo["stats"];
         const hunterEarnings = bountyInfo["hunterEarnings"];
+        console.log(`Stats: {${JSON.stringify(stats)}}`);
         userData.userInfo = {
-          averageRating: stats["averageRating"],
+          averageRating: stats["averageHunterRating"],
           completedBounties: stats["completedBountiesCount"],
           totalReviews: stats["numHunterReviews"],
           approximateCyclesEarned: hunterEarnings["approximateCyclesEarned"],
@@ -130,15 +131,6 @@ const getReplitData = async ({
           after = after + 10;
         }
 
-        // {
-        //   title: "Quality Service",
-        //   name: "Particle",
-        //   star: 4,
-        //   review:
-        //     "They Provide great quality service and their behavior is so much helpful.",
-        //   avatar: Testimonial,
-        // },
-        //
         const calculateBountyRating = (listing) => {
           const ratingsKeys = [
             "communicationRating",
