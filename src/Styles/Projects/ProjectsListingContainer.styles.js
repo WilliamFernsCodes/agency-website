@@ -35,6 +35,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "flex-end",
     gap: "10px",
+    marginTop: "auto",
   },
   ProjectTag: {
     color: "#fff",

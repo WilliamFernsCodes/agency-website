@@ -28,17 +28,23 @@ const ProjectsListingContainer = ({ projectsData }) => {
 
               {"tags" in project && project.tags.length > 0 && (
                 <Box sx={styles.ProjectTagsContainer}>
-                  {project.tags.map((tag, index) => (
-                    <Chip
-                      label={tag}
-                      key={index}
-                      sx={{
-                        ...styles.ProjectTag,
-                        backgroundColor: tagsColors[index],
-                      }}
-                      size="small"
-                    />
-                  ))}
+                  {project.tags.map((tag, index) => {
+                    const backgroundColor = tagsColors[index];
+                    console.log(
+                      `Background Color: ${backgroundColor} for tag and index: ${tag}, ${index}`,
+                    );
+                    return (
+                      <Chip
+                        label={tag}
+                        key={index}
+                        sx={{
+                          ...styles.ProjectTag,
+                          backgroundColor: backgroundColor,
+                        }}
+                        size="small"
+                      />
+                    );
+                  })}
                 </Box>
               )}
             </Box>
