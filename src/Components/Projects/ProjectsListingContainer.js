@@ -1,9 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import { Chip, Box, Typography } from "@mui/material";
 import { getTagsBackgroundColors } from "lib/utils";
 
 //Styles
 import styles from "Styles/Projects/ProjectsListingContainer.styles";
-import ProjectTag from "./ProjectTag";
 
 const ProjectsListingContainer = ({ projectsData }) => {
   const projectsTagsBackgroundColors = projectsData.map((project) => {
@@ -26,13 +25,18 @@ const ProjectsListingContainer = ({ projectsData }) => {
                 {project.name}
               </Typography>
               <Box sx={styles.ImageBox} component="img" src={project.image} />
-              <Box sx={styles.CardFooterContainer}>
+              <Box sx={styles.ProjectTagsContainer}>
                 {"tags" in project &&
                   project.tags.map((tag, index) => (
-                    <ProjectTag
+                    <Chip
+                      label={tag}
                       key={index}
-                      text={tag}
-                      backgroundColor={tagsColors[index]}
+                      sx={{
+                        ...styles.ProjectTag,
+                        backgroundColor: tagsColors[index],
+                        borderRadius: "5px",
+                      }}
+                      size="small"
                     />
                   ))}
               </Box>

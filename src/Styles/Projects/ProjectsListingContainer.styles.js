@@ -30,25 +30,22 @@ const styles = {
     width: "275px",
     borderRadius: "5px",
   },
-  CardFooterContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "fit-content",
-  },
   ProjectTagsContainer: {
+    width: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     gap: "10px",
-    width: "fit-content",
   },
-  ProjectLinksContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "10px",
-    width: "fit-content",
+  ProjectTag: {
+    color: "#fff",
+    fontFamily: "Poppins, sans-serif",
+    fontWeight: 500,
+    fontSize: "12px",
+    lineHeight: "100%",
+    textTransform: "uppercase",
+    borderRadius: "5px",
+    fontFamily: "Poppins, sans-serif",
   },
 };
 
