@@ -6,7 +6,6 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     p: "5px 7.5px",
-    backgroundColor: getRandomColor(),
     width: "fit-content",
   },
   TagText: {

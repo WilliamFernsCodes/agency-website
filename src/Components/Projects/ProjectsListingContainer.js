@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { getRandomColor } from "lib/utils";
 import Link from "next/link";
 
 //Styles
@@ -6,6 +7,11 @@ import styles from "Styles/Projects/ProjectsListingContainer.styles";
 import ProjectTag from "./ProjectTag";
 
 const ProjectsListingContainer = ({ projectsData }) => {
+  const randomBackgroundColor = () => {
+    const randomColor = getRandomColor();
+    console.log(`Random Color: ${randomColor}`);
+    return randomColor;
+  };
   return (
     <Box sx={styles.ProjectsContainer}>
       {projectsData &&
@@ -18,7 +24,11 @@ const ProjectsListingContainer = ({ projectsData }) => {
             <Box sx={styles.CardFooterContainer}>
               {"tags" in project &&
                 project.tags.map((tag, index) => (
-                  <ProjectTag key={index} text={tag} />
+                  <ProjectTag
+                    key={index}
+                    text={tag}
+                    backgroundColor={() => randomBackgroundColor()}
+                  />
                 ))}
             </Box>
           </Box>

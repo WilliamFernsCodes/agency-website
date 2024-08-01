@@ -77,7 +77,6 @@ const Sliders = () => {
                 )
                   ? `https://ui-avatars.com/api/?name=${capitalizeFirstLetter(name.slice(0, 3))}+${capitalizeFirstLetter(name.slice(1, 3))}&background=${backgroundColor}&color=${textColor}`
                   : testimonial.avatarURL;
-                console.log(`Avatar URL: ${avatarURL}`);
 
                 return (
                   <Box className="embla__slide" sx={styles.EmblaSlide} key={i}>

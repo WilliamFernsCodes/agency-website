@@ -12,6 +12,7 @@ const projects = [
     filter: "web",
     image: ExpressAdonisDropshipping,
     url: "https://expressadonis.com",
+    tags: ["tag1", "tag2"],
   },
   {
     name: "AI Mock Interview Web App",

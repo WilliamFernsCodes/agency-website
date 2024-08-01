@@ -14,7 +14,7 @@ function capitalizeFirstLetter(string) {
 
 function getRandomColor() {
   const randomColors = ["#000", "#800080", "#A52A2A", "#264DE4", "#008000"];
-  const randomIndex = Math.floor(Math.random() * randomColors.length + 1);
+  const randomIndex = Math.floor(Math.random() * randomColors.length);
   return randomColors[randomIndex];
 }
 
