@@ -25,21 +25,22 @@ const ProjectsListingContainer = ({ projectsData }) => {
                 {project.name}
               </Typography>
               <Box sx={styles.ImageBox} component="img" src={project.image} />
-              <Box sx={styles.ProjectTagsContainer}>
-                {"tags" in project &&
-                  project.tags.map((tag, index) => (
+
+              {"tags" in project && project.tags.length > 0 && (
+                <Box sx={styles.ProjectTagsContainer}>
+                  {project.tags.map((tag, index) => (
                     <Chip
                       label={tag}
                       key={index}
                       sx={{
                         ...styles.ProjectTag,
                         backgroundColor: tagsColors[index],
-                        borderRadius: "5px",
                       }}
                       size="small"
                     />
                   ))}
-              </Box>
+                </Box>
+              )}
             </Box>
           );
         })}

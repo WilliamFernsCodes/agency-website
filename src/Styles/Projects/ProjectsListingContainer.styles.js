@@ -7,10 +7,9 @@ const styles = {
     gap: "30px",
   },
   ProjectCard: {
-    width: "300px",
+    width: { xxs: "250px", md: "300px" },
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
     flexDirection: "column",
     backgroundColor: "#fff",
     gap: "10px",
@@ -27,7 +26,7 @@ const styles = {
     fontFamily: "Poppins, sans-serif",
   },
   ImageBox: {
-    width: "275px",
+    width: "100%",
     borderRadius: "5px",
   },
   ProjectTagsContainer: {
