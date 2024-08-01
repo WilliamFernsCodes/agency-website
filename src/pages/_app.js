@@ -16,6 +16,8 @@ import "@fontsource/inter/700.css";
 import "@fontsource/inter/800.css";
 
 import "@fontsource/poppins";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/600-italic.css";
 
 export default function MyApp(props) {

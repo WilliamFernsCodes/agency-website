@@ -2,10 +2,22 @@ const styles = {
   Container: {
     overflow: "hidden",
     py: "5em",
+    position: "relative",
     background: (theme) =>
       theme.palette.primary.ProjectListingContainerGradient,
     width: "100%",
-    // height: "50em",
+  },
+  ParticleOverlay: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    zIndex: 5,
+  },
+  MainContainer: {
+    overflow: "hidden",
+    position: "relative",
+    zIndex: 6,
+    width: "100%",
   },
   ButtonGroup: {
     "& .MuiTabs-flexContainer": {

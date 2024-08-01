@@ -1,38 +1,54 @@
 const styles = {
-  ImageContainer: {
-    transition: "all 0.4s ease",
-    "&:hover": {
-      transform: "scale(1.05)",
-    },
-    width: {
-      md: "350px",
-      smd: "280px",
-      lsm: "250px",
-      msm: "230px",
-      sm: "190px",
-      xxs: "100%",
-    },
-    height: "auto",
-    position: "relative",
-    a: {
-      textDecoration: "none",
-      color: "text.primary",
-      img: {
-        width: "100%",
-        height: "100%",
-      },
-    },
-  },
-  ImageBox: {
+  ProjectsContainer: {
     width: "100%",
-    height: "100%",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: "30px",
+  },
+  ProjectCard: {
+    width: "300px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    backgroundColor: "#fff",
+    gap: "10px",
+    p: "15px",
     borderRadius: "10px",
+    boxShadow: (theme) =>
+      `3px 4px 3px ${theme.palette.primary.box_shadow_client}`,
   },
   ProjectTitle: {
-    fontWeight: 600,
+    fontWeight: 500,
     width: "100%",
     textAlign: "center",
-    fontSize: "1rem",
+    fontSize: "16px",
+    fontFamily: "Poppins, sans-serif",
+  },
+  ImageBox: {
+    width: "275px",
+    borderRadius: "5px",
+  },
+  CardFooterContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "fit-content",
+  },
+  ProjectTagsContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "10px",
+    width: "fit-content",
+  },
+  ProjectLinksContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "10px",
+    width: "fit-content",
   },
 };
 

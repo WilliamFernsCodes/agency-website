@@ -12,7 +12,10 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export {
-  shortenText,
-  capitalizeFirstLetter,
-};
+function getRandomColor() {
+  const randomColors = ["#000", "#800080", "#A52A2A", "#264DE4", "#008000"];
+  const randomIndex = Math.floor(Math.random() * randomColors.length + 1);
+  return randomColors[randomIndex];
+}
+
+export { shortenText, capitalizeFirstLetter, getRandomColor };

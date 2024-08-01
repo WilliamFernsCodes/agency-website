@@ -44,12 +44,13 @@ const Projects = () => {
       sx={styles.Container}
       id="projects"
     >
+      <Box component="img" src={Particle} sx={styles.ParticleOverlay} />
       <SectionHeading value1="Our Projects" border={false} />
       <TabContext value={value}>
         <Box sx={{ mt: "3em" }}>
           <TabList
             onChange={handleChange}
-            aria-label="lab API tabs example"
+            aria-label="Projects Tab List Switcher"
             TabIndicatorProps={{
               style: {
                 display: "none",
@@ -74,7 +75,7 @@ const Projects = () => {
             />
           </TabList>
         </Box>
-        <TabPanel value="1" sx={{ pr: "0px", mt: "15px" }}>
+        <TabPanel value="1" sx={{ px: "0px" }}>
           <Box ref={containerRef}>
             <Fade in={value === "1" ? true : false} timeout={2000}>
               <Box>

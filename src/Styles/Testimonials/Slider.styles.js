@@ -28,7 +28,7 @@ const styles = {
     mx: "15px",
     p: { xxs: "15px 10px", md: "29px 25px" },
     textAlign: "center",
-    borderRadius: "15px",
+    borderRadius: "10px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
