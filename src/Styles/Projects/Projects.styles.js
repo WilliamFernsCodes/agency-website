@@ -2,8 +2,8 @@ const styles = {
   Container: {
     overflow: "hidden",
     py: "5em",
-    // background: (theme) =>
-    //   theme.palette.primary.ProjectListingContainerGradient,
+    background: (theme) =>
+      theme.palette.primary.ProjectListingContainerGradient,
     width: "100%",
     // height: "50em",
   },

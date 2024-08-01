@@ -1,5 +1,6 @@
 const styles = {
   StatsContainer: {
+    mt: "3em",
     backgroundColor: "#fff",
   },
   Stats: {
@@ -7,6 +8,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
+    p: "3em",
   },
   CountUpsParentContainer: {
     display: "flex",
@@ -37,8 +39,8 @@ const styles = {
   },
   Divider: {
     backgroundColor: "primary.divider",
-    mt: "2em",
-    mb: "3em",
+    // mt: "2em",
+    // mb: "3em",
   },
   StatNumber: {
     fontWeight: 600,
