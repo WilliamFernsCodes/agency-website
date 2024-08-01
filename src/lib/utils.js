@@ -13,7 +13,7 @@ function capitalizeFirstLetter(string) {
 }
 
 function getTagsBackgroundColors() {
-  const allColors = ["#000", "#800080", "#A52A2A", "#264DE4", "#008000"];
+  const allColors = ["#800080", "#A52A2A", "#264DE4", "#008000"];
   // shuffle all colors in a random order
   const shuffledColors = allColors.sort(() => Math.random() - 0.5);
   console.log(`Shuffled Colors: ${shuffledColors}`);

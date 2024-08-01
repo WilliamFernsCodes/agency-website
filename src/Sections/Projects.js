@@ -45,7 +45,7 @@ const Projects = () => {
       id="projects"
     >
       <Box component="img" src={Particle} sx={styles.ParticleOverlay} />
-      <Container sx={styles.MainContainer}>
+      <Box sx={styles.MainContainer}>
         <SectionHeading value1="Our Projects" border={false} />
         <TabContext value={value}>
           <Box sx={{ mt: "3em" }}>
@@ -149,7 +149,7 @@ const Projects = () => {
             </Box>
           </TabPanel>
         </TabContext>
-      </Container>
+      </Box>
     </Container>
   );
 };

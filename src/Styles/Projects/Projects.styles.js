@@ -14,10 +14,9 @@ const styles = {
     zIndex: 5,
   },
   MainContainer: {
-    overflow: "hidden",
+    width: "100%",
     position: "relative",
     zIndex: 6,
-    width: "100%",
   },
   ButtonGroup: {
     "& .MuiTabs-flexContainer": {
