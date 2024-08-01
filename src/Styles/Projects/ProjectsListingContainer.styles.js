@@ -7,13 +7,13 @@ const styles = {
     gap: "30px",
   },
   ProjectCard: {
-    width: { xxs: "100%", md: "300px" },
+    width: { xxs: "100%", sm: "300px" },
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
     backgroundColor: "#fff",
-    gap: { xxs: "7.5px", md: "10px" },
-    p: { xxs: "10px", md: "15px" },
+    gap: { xxs: "7.5px", sm: "10px" },
+    p: { xxs: "10px", sm: "15px" },
     borderRadius: "10px",
     boxShadow: (theme) =>
       `3px 4px 3px ${theme.palette.primary.box_shadow_client}`,

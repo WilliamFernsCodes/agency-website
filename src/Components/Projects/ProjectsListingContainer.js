@@ -5,15 +5,15 @@ import { getTagsBackgroundColors } from "lib/utils";
 import styles from "Styles/Projects/ProjectsListingContainer.styles";
 
 const ProjectsListingContainer = ({ projectsData }) => {
+  console.log(
+    `Projects Data In Listing Container: ${JSON.stringify(projectsData, null, 2)}`,
+  );
   const projectsTagsBackgroundColors = projectsData.map((project) => {
     if ("tags" in project) {
       return getTagsBackgroundColors().slice(0, project.tags.length);
     } else return [];
   });
 
-  console.log(
-    `Tags Colors: ${JSON.stringify(projectsTagsBackgroundColors, null, 2)}`,
-  );
   return (
     <Box sx={styles.ProjectsContainer}>
       {projectsData &&
@@ -22,17 +22,21 @@ const ProjectsListingContainer = ({ projectsData }) => {
           return (
             <Box sx={styles.ProjectCard} key={i}>
               <Typography variant="h5" component="h5" sx={styles.ProjectTitle}>
-                {project.name}
+                {project.projectName}
               </Typography>
-              <Box sx={styles.ImageBox} component="img" src={project.image} />
+              <a href={project.url} target="_blank" rel="noreferrer">
+                Click here
+              </a>
+              <Box
+                sx={styles.ImageBox}
+                component="img"
+                src={project.imagePath}
+              />
 
               {"tags" in project && project.tags.length > 0 && (
                 <Box sx={styles.ProjectTagsContainer}>
                   {project.tags.map((tag, index) => {
                     const backgroundColor = tagsColors[index];
-                    console.log(
-                      `Background Color: ${backgroundColor} for tag and index: ${tag}, ${index}`,
-                    );
                     return (
                       <Chip
                         label={tag}

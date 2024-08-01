@@ -1,3 +1,5 @@
+import { createClient } from "@supabase/supabase-js";
+
 const shortenText = (input, maxLength) => {
   if (input.length > maxLength) {
     const newVar = input.slice(0, maxLength) + " " + "...";
@@ -16,8 +18,19 @@ function getTagsBackgroundColors() {
   const allColors = ["#800080", "#A52A2A", "#264DE4", "#008000"];
   // shuffle all colors in a random order
   const shuffledColors = allColors.sort(() => Math.random() - 0.5);
-  console.log(`Shuffled Colors: ${shuffledColors}`);
   return shuffledColors;
 }
 
-export { shortenText, capitalizeFirstLetter, getTagsBackgroundColors };
+const createSupabase = (key) => {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_BASE_URL;
+  const supabase = createClient(supabaseUrl, key);
+
+  return supabase;
+};
+
+export {
+  shortenText,
+  capitalizeFirstLetter,
+  getTagsBackgroundColors,
+  createSupabase,
+};

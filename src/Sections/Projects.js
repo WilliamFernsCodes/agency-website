@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useEffect } from "react";
 import { Container, Tab, Box, Fade, Slide } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 
@@ -9,7 +9,8 @@ import SectionHeading from "Utilis/SectionHeading";
 import ProjectsListingContainer from "Components/Projects/ProjectsListingContainer";
 
 //Data
-import ProjectsData from "Data/Projects/Projects.data";
+import { getProjects } from "lib/supabase";
+// import projectsData from "Data/Projects/Projects.data";
 
 //Background
 import Particle from "Assets/projects/other/particle.png";
@@ -18,24 +19,44 @@ import Particle from "Assets/projects/other/particle.png";
 import styles from "Styles/Projects/Projects.styles";
 
 const Projects = () => {
-  const [Items, setItems] = useState(ProjectsData);
+  const [projectsData, setProjectsData] = useState([]);
+  const [Items, setItems] = useState([]);
   const [value, setValue] = useState("1");
   const containerRef = useRef(null);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const filterItem = (filterItem) => {
-    const updateItem = ProjectsData.filter((curElem) => {
-      return curElem.filter === filterItem;
+  const filterData = (filterItem, data) => {
+    const filteredData = data.filter((curElem) => {
+      return curElem.projectType === filterItem;
     });
-    setItems(updateItem);
+    console.log(`Filtered Data: ${JSON.stringify(filteredData, null, 2)}`);
+    setItems(filteredData);
   };
-  useMemo(() => {
-    const updateItem = ProjectsData.filter((curElem) => {
-      return curElem.filter === "web";
-    });
-    setItems(updateItem);
+  useEffect(() => {
+    const getProjectsData = async () => {
+      const data = await getProjects();
+      setProjectsData(data);
+      filterData("web", data);
+    };
+    getProjectsData();
   }, []);
+
+  const tabs = [
+    {
+      title: "Web Development",
+      projectsType: "web",
+    },
+    {
+      title: "Backend Development",
+      projectsType: "backend",
+    },
+    {
+      title: "UI/UX Design",
+      projectsType: "ui",
+    },
+  ];
+
   return (
     <Container
       maxWidth={false}
@@ -59,95 +80,39 @@ const Projects = () => {
               }}
               sx={styles.ButtonGroup}
             >
-              <Tab
-                label="Web Development"
-                value="1"
-                onClick={() => filterItem("web")}
-              />
-              <Tab
-                label="Backend Development"
-                value="2"
-                onClick={() => filterItem("backend")}
-              />
-              <Tab
-                label="UI/UX Design"
-                value="3"
-                onClick={() => filterItem("ui")}
-              />
+              {tabs.map((tab, index) => (
+                <Tab
+                  key={index}
+                  label={tab.title}
+                  value={`${index + 1}`}
+                  onClick={() => filterData(tab.projectsType, projectsData)}
+                />
+              ))}
             </TabList>
           </Box>
-          <TabPanel value="1" sx={{ px: "0px" }}>
-            <Box ref={containerRef}>
-              <Fade in={value === "1" ? true : false} timeout={2000}>
-                <Box>
-                  <Slide
-                    in={value === "1" ? true : false}
-                    timeout={800}
-                    direction="left"
-                    container={containerRef.current}
-                  >
+          {tabs.map((tab, index) => {
+            const tabValue = `${index + 1}`;
+            return (
+              <TabPanel key={index} value={tabValue} sx={{ px: "0px" }}>
+                <Box ref={containerRef}>
+                  <Fade in={value === tabValue ? true : false} timeout={2000}>
                     <Box>
-                      <ProjectsListingContainer projectsData={Items} />
+                      <Slide
+                        in={value === tabValue ? true : false}
+                        timeout={800}
+                        direction="left"
+                        container={containerRef.current}
+                      >
+                        <Box>
+                          <ProjectsListingContainer projectsData={Items} />
+                        </Box>
+                      </Slide>
                     </Box>
-                  </Slide>
+                  </Fade>
                 </Box>
-              </Fade>
-            </Box>
-          </TabPanel>
-          <TabPanel value="2" sx={{ pr: "0px", mt: "15px" }}>
-            <Box ref={containerRef}>
-              <Fade in={value === "2" ? true : false} timeout={2000}>
-                <Box>
-                  <Slide
-                    in={value === "2" ? true : false}
-                    direction="left"
-                    timeout={800}
-                    container={containerRef.current}
-                  >
-                    <Box>
-                      <ProjectsListingContainer works={Items} />
-                    </Box>
-                  </Slide>
-                </Box>
-              </Fade>
-            </Box>
-          </TabPanel>
-          <TabPanel value="3" sx={{ pr: "0px", mt: "15px" }}>
-            <Box ref={containerRef}>
-              <Fade in={value === "3" ? true : false} timeout={2000}>
-                <Box>
-                  <Slide
-                    in={value === "3" ? true : false}
-                    direction="left"
-                    container={containerRef.current}
-                    timeout={800}
-                  >
-                    <Box>
-                      <ProjectsListingContainer works={Items} />
-                    </Box>
-                  </Slide>
-                </Box>
-              </Fade>
-            </Box>
-          </TabPanel>
-          <TabPanel value="4" sx={{ pr: "0px", mt: "15px" }}>
-            <Box ref={containerRef}>
-              <Fade in={value === "4" ? true : false} timeout={2000}>
-                <Box>
-                  <Slide
-                    in={value === "4" ? true : false}
-                    direction="left"
-                    timeout={800}
-                    container={containerRef.current}
-                  >
-                    <Box>
-                      <ProjectsListingContainer works={Items} />
-                    </Box>
-                  </Slide>
-                </Box>
-              </Fade>
-            </Box>
-          </TabPanel>
+              </TabPanel>
+            );
+          })}
         </TabContext>
       </Box>
     </Container>
@@ -155,3 +120,60 @@ const Projects = () => {
 };
 
 export default Projects;
+//
+// <TabPanel value="2" sx={{ pr: "0px", mt: "15px" }}>
+//   <Box ref={containerRef}>
+//     <Fade in={value === "2" ? true : false} timeout={2000}>
+//       <Box>
+//         <Slide
+//           in={value === "2" ? true : false}
+//           direction="left"
+//           timeout={800}
+//           container={containerRef.current}
+//         >
+//           <Box>
+//             <ProjectsListingContainer projectsData={Items} />
+//           </Box>
+//         </Slide>
+//       </Box>
+//     </Fade>
+//   </Box>
+// </TabPanel>
+//
+// <TabPanel value="3" sx={{ pr: "0px", mt: "15px" }}>
+//   <Box ref={containerRef}>
+//     <Fade in={value === "3" ? true : false} timeout={2000}>
+//       <Box>
+//         <Slide
+//           in={value === "3" ? true : false}
+//           direction="left"
+//           container={containerRef.current}
+//           timeout={800}
+//         >
+//           <Box>
+//             <ProjectsListingContainer projectsData={Items} />
+//           </Box>
+//         </Slide>
+//       </Box>
+//     </Fade>
+//   </Box>
+// </TabPanel>
+//
+// <TabPanel value="4" sx={{ pr: "0px", mt: "15px" }}>
+//   <Box ref={containerRef}>
+//     <Fade in={value === "4" ? true : false} timeout={2000}>
+//       <Box>
+//         <Slide
+//           in={value === "4" ? true : false}
+//           direction="left"
+//           timeout={800}
+//           container={containerRef.current}
+//         >
+//           <Box>
+//             <ProjectsListingContainer projectsData={Items} />
+//           </Box>
+//         </Slide>
+//       </Box>
+//     </Fade>
+//   </Box>
+// </TabPanel>
