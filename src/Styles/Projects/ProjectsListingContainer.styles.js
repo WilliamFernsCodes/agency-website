@@ -32,8 +32,11 @@ const styles = {
     fontFamily: "Poppins, sans-serif",
   },
   ImageBox: {
-    width: "100%",
     marginTop: "auto",
+    width: "100%",
+    overflow: "hidden",
+    paddingTop: "56.25%",
+    position: "relative",
     borderRadius: "5px",
   },
   ProjectTagsContainer: {

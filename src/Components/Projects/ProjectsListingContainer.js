@@ -1,5 +1,7 @@
-import { Chip, Box, Typography } from "@mui/material";
+import { Skeleton, Chip, Box, Typography } from "@mui/material";
 import { getTagsBackgroundColors } from "lib/utils";
+import Image from "next/image";
+import { SkeletonImage } from "Components/other/skeletons";
 
 //Styles
 import styles from "Styles/Projects/ProjectsListingContainer.styles";
@@ -16,7 +18,7 @@ const ProjectsListingContainer = ({ projectsData }) => {
 
   return (
     <Box sx={styles.ProjectsContainer}>
-      {projectsData &&
+      {projectsData && projectsData.length > 0 ? (
         projectsData.map((project, i) => {
           const tagsColors = projectsTagsBackgroundColors[i];
           return (
@@ -28,10 +30,16 @@ const ProjectsListingContainer = ({ projectsData }) => {
               <Typography variant="h5" component="h5" sx={styles.ProjectTitle}>
                 {project.projectName}
               </Typography>
-              <Box
-                sx={styles.ImageBox}
-                component="img"
+
+              <SkeletonImage
                 src={project.imagePath}
+                alt={`Image of ${project.projectName}`}
+                styles={styles.ImageBox}
+                imageProps={{
+                  objectFit: "cover",
+                  layout: "fill",
+                  component: "img",
+                }}
               />
 
               {"tags" in project && project.tags.length > 0 && (
@@ -54,8 +62,16 @@ const ProjectsListingContainer = ({ projectsData }) => {
               )}
             </Box>
           );
-        })}
+        })
+      ) : (
+        <ProjectsListingsSkeleton />
+      )}
     </Box>
   );
 };
+
+const ProjectsListingsSkeleton = () => {
+  return <Skeleton variant="rectangular" width={300} height={300} />;
+};
+
 export default ProjectsListingContainer;

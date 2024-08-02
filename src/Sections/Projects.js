@@ -2,6 +2,8 @@ import { useState, useRef, useMemo, useEffect } from "react";
 import { Container, Tab, Box, Fade, Slide } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 
+import Image from "next/image";
+
 //SectionHeading
 import SectionHeading from "Utilis/SectionHeading";
 
@@ -65,7 +67,12 @@ const Projects = () => {
       sx={styles.Container}
       id="projects"
     >
-      <Box component="img" src={Particle} sx={styles.ParticleOverlay} />
+      <Box
+        component="img"
+        alt="particle overlay"
+        src={Particle}
+        style={styles.ParticleOverlay}
+      />
       <Box sx={styles.MainContainer}>
         <SectionHeading value1="Our Projects" border={false} />
         <TabContext value={value}>
