@@ -10,8 +10,9 @@ const styles = {
   },
   EmblaContainer: {
     display: "flex",
+    alignItems: "stretch",
   },
-  EmblaSlide: {
+  EmblaSlideBase: {
     position: "relative",
     flex: {
       lg: "0 0 40%",
@@ -22,18 +23,21 @@ const styles = {
       xs: "0 0 90%",
       xxs: "0 0 100%",
     },
-    backgroundColor: "background.default",
-    boxShadow: (theme) =>
-      `3px 4px 3px ${theme.palette.primary.box_shadow_client}`,
     mx: "15px",
-    p: { xxs: "15px 10px", md: "29px 25px" },
+    p: { xxs: "20px 14px", md: "29px 25px" },
     textAlign: "center",
     borderRadius: "10px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: { xxs: "10px", md: "25px" },
+    minHeight: "350px",
+    gap: { xxs: "15px", md: "25px" },
+  },
+  EmblaSlide: {
+    backgroundColor: "background.default",
+    boxShadow: (theme) =>
+      `3px 4px 3px ${theme.palette.primary.box_shadow_client}`,
   },
   QuoteContainer: {
     width: "100%",
@@ -42,7 +46,7 @@ const styles = {
     justifyContent: "center",
     minHeight: { xxs: "90px", md: "125px" },
     height: "fit-content",
-    py: { xxs: "10px", md: "25px" },
+    py: { xxs: "15px", md: "25px" },
     borderLeft: "5px solid #FF4F3E",
     // style the "p" tag:
     "& p": {
@@ -58,7 +62,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: { xxs: "10px", md: "20px" },
+    gap: { xxs: "15px", md: "20px" },
   },
   PosterInfo: {
     display: "flex",

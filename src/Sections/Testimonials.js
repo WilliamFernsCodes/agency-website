@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Skeleton, Box } from "@mui/material";
 
 //SectionHeading
 import SectionHeading from "Utilis/SectionHeading";
@@ -10,6 +10,7 @@ import { ListingsStats } from "Components/Skills";
 
 //Styles
 import styles from "Styles/Testimonials/Testimonials.styles";
+import TestimonialsSkeleton from "Components/other/skeletons/TestimonialsSkeleton";
 
 const Testimonials = () => {
   return (

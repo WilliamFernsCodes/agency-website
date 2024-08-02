@@ -21,6 +21,8 @@ import getTestimonialsData from "Data/Testimonials/Testimonials.data";
 //Styles
 import styles from "Styles/Testimonials/Slider.styles";
 
+import TestimonialsSkeleton from "Components/other/skeletons/TestimonialsSkeleton";
+
 const Sliders = () => {
   const [viewportRef, embla] = useEmblaCarousel({
     dragFree: true,
@@ -65,7 +67,7 @@ const Sliders = () => {
       <Box className="embla" sx={styles.Embla}>
         <Box className="embla__viewport" ref={viewportRef}>
           <Box className="embla__container" sx={styles.EmblaContainer}>
-            {testimonials &&
+            {testimonials && testimonials.length > 0 ? (
               testimonials.map((testimonial, i) => {
                 const review = shortenText(testimonial.review, 70);
                 const title = shortenText(testimonial.title, 50);
@@ -79,7 +81,11 @@ const Sliders = () => {
                   : testimonial.avatarURL;
 
                 return (
-                  <Box className="embla__slide" sx={styles.EmblaSlide} key={i}>
+                  <Box
+                    className="embla__slide"
+                    sx={{ ...styles.EmblaSlide, ...styles.EmblaSlideBase }}
+                    key={i}
+                  >
                     <Rating
                       name="half-rating-read"
                       size="large"
@@ -120,7 +126,10 @@ const Sliders = () => {
                     )}
                   </Box>
                 );
-              })}
+              })
+            ) : (
+              <TestimonialsSkeleton />
+            )}
           </Box>
         </Box>
         <Box sx={styles.Navigation}>
