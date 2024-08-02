@@ -9,6 +9,8 @@ const styles = {
   ProjectCard: {
     width: { xxs: "100%", sm: "300px" },
     display: "flex",
+    cursor: "pointer",
+    transition: "all 0.3s ease-in-out",
     alignItems: "center",
     flexDirection: "column",
     backgroundColor: "#fff",
@@ -17,6 +19,10 @@ const styles = {
     borderRadius: "10px",
     boxShadow: (theme) =>
       `3px 4px 3px ${theme.palette.primary.box_shadow_client}`,
+    "&:hover": {
+      transform: "scale(1.05)",
+      boxShadow: `0px 0px 20px rgba(0, 0, 0, 0.3)`,
+    },
   },
   ProjectTitle: {
     fontWeight: 600,

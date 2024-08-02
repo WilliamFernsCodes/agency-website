@@ -20,7 +20,11 @@ const ProjectsListingContainer = ({ projectsData }) => {
         projectsData.map((project, i) => {
           const tagsColors = projectsTagsBackgroundColors[i];
           return (
-            <Box sx={styles.ProjectCard} key={i}>
+            <Box
+              sx={styles.ProjectCard}
+              key={i}
+              onClick={() => window.open(project.url, "_blank")}
+            >
               <Typography variant="h5" component="h5" sx={styles.ProjectTitle}>
                 {project.projectName}
               </Typography>
