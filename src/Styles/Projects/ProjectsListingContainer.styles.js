@@ -27,6 +27,7 @@ const styles = {
   },
   ImageBox: {
     width: "100%",
+    marginTop: "auto",
     borderRadius: "5px",
   },
   ProjectTagsContainer: {
@@ -35,7 +36,6 @@ const styles = {
     alignItems: "center",
     justifyContent: "flex-end",
     gap: "5px",
-    marginTop: "auto",
   },
   ProjectTag: {
     color: "#fff",

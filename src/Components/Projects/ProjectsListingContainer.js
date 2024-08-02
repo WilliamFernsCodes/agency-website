@@ -24,9 +24,6 @@ const ProjectsListingContainer = ({ projectsData }) => {
               <Typography variant="h5" component="h5" sx={styles.ProjectTitle}>
                 {project.projectName}
               </Typography>
-              <a href={project.url} target="_blank" rel="noreferrer">
-                Click here
-              </a>
               <Box
                 sx={styles.ImageBox}
                 component="img"

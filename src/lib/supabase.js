@@ -12,7 +12,7 @@ const getProjects = async () => {
     return {
       projectName: project.project_name,
       projectType: project.project_type,
-      imagePath: `${process.env.NEXT_PUBLIC_SUPABASE_BASE_URL}/storage/v1/object/public/images/${project.image_path}`,
+      imagePath: `${process.env.NEXT_PUBLIC_SUPABASE_BASE_URL}/storage/v1/object/public/${project.image_path}`,
       tags: project.tags,
       url: project.url,
     };
