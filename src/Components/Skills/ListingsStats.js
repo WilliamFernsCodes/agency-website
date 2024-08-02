@@ -1,8 +1,7 @@
-import { Box, Stack, Typography, Divider, Rating } from "@mui/material";
+import { Box, Stack, Typography, Divider } from "@mui/material";
 import { useState, useEffect } from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
-import bountyHunters from "Data/Team/bountyHunters";
 
 //Data
 import getListingsData from "Data/Skills/ListingsStats.data";

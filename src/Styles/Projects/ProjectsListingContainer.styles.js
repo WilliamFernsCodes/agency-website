@@ -7,7 +7,7 @@ const styles = {
     gap: "30px",
   },
   ProjectCard: {
-    width: { xxs: "100%", sm: "300px" },
+    width: { xxs: "100%", xs: "300px" },
     display: "flex",
     cursor: "pointer",
     transition: "all 0.3s ease-in-out",
@@ -34,9 +34,10 @@ const styles = {
   ImageBox: {
     marginTop: "auto",
     width: "100%",
-    overflow: "hidden",
-    paddingTop: "56.25%",
     position: "relative",
+    borderRadius: "5px",
+    overflow: "hidden",
+    height: "150px",
     borderRadius: "5px",
   },
   ProjectTagsContainer: {

@@ -1,4 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
+import { SkeletonImage } from "Components/other/skeletons";
 
 //Data
 import Solutions from "Data/About/Solution.data";
@@ -12,15 +13,18 @@ const Solution = () => {
       {Solutions &&
         Solutions.map((solution, i) => (
           <Box sx={styles.SolutionElement} key={i}>
-            <Box sx={{ textAlign: "center" }}>
-              <Box sx={styles.Image} component="img" src={solution.icon} />
-              <Typography variant="h6" component="h6" sx={styles.Title}>
-                {solution.title}
-              </Typography>
-              <Typography variant="body1" component="p" sx={styles.Description}>
-                {solution.description}
-              </Typography>
-            </Box>
+            <SkeletonImage
+              alt={solution.title}
+              src={solution.icon}
+              imageProps={styles.Image}
+              styles={styles.ImageContainer}
+            />
+            <Typography variant="h6" component="h6" sx={styles.Title}>
+              {solution.title}
+            </Typography>
+            <Typography variant="body1" component="p" sx={styles.Description}>
+              {solution.description}
+            </Typography>
           </Box>
         ))}
     </Box>

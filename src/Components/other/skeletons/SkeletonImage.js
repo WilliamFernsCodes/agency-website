@@ -5,12 +5,11 @@ import Box from "@mui/material/Box";
 import Image from "next/image";
 
 const SkeletonImage = ({
-  width,
-  height,
   src,
   alt,
   styles,
   imageProps = {},
+  imageStyles = {},
 }) => {
   const [loading, setLoading] = useState(true);
 
@@ -19,25 +18,25 @@ const SkeletonImage = ({
   };
 
   return (
-    <Box sx={styles}>
+    <Box
+      sx={{
+        ...styles,
+        border: loading ? "1px solid #e0e0e0" : "unset",
+      }}
+    >
       {loading && (
         <Skeleton
           variant="rectangular"
           width="100%"
           animation="pulse"
           height="100%"
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-          }}
         />
       )}
       <Image
         src={src}
         alt={alt}
         onLoadingComplete={handleImageLoad}
-        style={{ display: loading ? "none" : "block" }}
+        style={{ display: loading ? "none" : "block", ...imageStyles }}
         {...imageProps}
       />
     </Box>

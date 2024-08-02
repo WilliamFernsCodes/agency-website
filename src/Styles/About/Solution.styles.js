@@ -1,6 +1,6 @@
 const styles = {
   Container: {
-    mt: "5em",
+    mt: "3em",
     display: "flex",
     flexWrap: "wrap",
     gap: "20px",
@@ -8,10 +8,11 @@ const styles = {
     justifyContent: "center",
   },
   SolutionElement: {
-    maxWidth: "300px",
+    textAlign: "center",
+    width: "300px",
     display: "flex",
+    gap: "5px",
     flexDirection: "column",
-    gap: "10px",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -22,6 +23,13 @@ const styles = {
   },
   Description: {
     fontSize: "15px",
+  },
+  ImageContainer: {
+    width: "200px",
+    height: "200px",
+    position: "relative",
+    overflow: "hidden",
+    borderRadius: "5px",
   },
   Image: {
     width: "200px",
