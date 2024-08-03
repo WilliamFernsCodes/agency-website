@@ -36,7 +36,7 @@ const SkeletonImage = ({
         src={src}
         alt={alt}
         onLoadingComplete={handleImageLoad}
-        style={{ display: loading ? "none" : "block", ...imageStyles }}
+        styles={{ display: loading ? "none" : "block", ...imageStyles }}
         {...imageProps}
       />
     </Box>

@@ -16,11 +16,7 @@ const Blog = () => {
       sx={{ py: "5em" }}
       id="blog"
     >
-      <SectionHeading
-        value1="Every Single Update"
-        value2="News & Blogs"
-        border={false}
-      />
+      <SectionHeading value1="Read Our Articles" border={false} />
       <SingleBlog />
       <Company />
     </Container>

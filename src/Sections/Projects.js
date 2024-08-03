@@ -1,8 +1,6 @@
-import { useState, useRef, useMemo, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Container, Tab, Box, Fade, Slide } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-
-import Image from "next/image";
 
 //SectionHeading
 import SectionHeading from "Utilis/SectionHeading";
@@ -12,7 +10,6 @@ import ProjectsListingContainer from "Components/Projects/ProjectsListingContain
 
 //Data
 import { getProjects } from "lib/supabase";
-// import projectsData from "Data/Projects/Projects.data";
 
 //Background
 import Particle from "Assets/projects/other/particle.png";

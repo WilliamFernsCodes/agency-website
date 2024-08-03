@@ -1,12 +1,32 @@
 import { Skeleton, Chip, Box, Typography } from "@mui/material";
 import { getTagsBackgroundColors } from "lib/utils";
-import Image from "next/image";
+import { useState } from "react";
 import { SkeletonImage } from "Components/other/skeletons";
+import ProjectLinksModel from "./ProjectLinksModel";
 
 //Styles
 import styles from "Styles/Projects/ProjectsListingContainer.styles";
 
 const ProjectsListingContainer = ({ projectsData }) => {
+  const [open, setOpen] = useState(false);
+  const [modelData, setModelData] = useState({});
+  const handleOpen = (projectLinks, projectName) => {
+    // see if project links is an array
+    if (projectLinks.length > 1) {
+      setOpen(true);
+      const newModelData = {
+        linksData: projectLinks.map((link) => JSON.parse(link)),
+        projectName,
+      };
+      console.log(`Model Data: ${JSON.stringify(newModelData, null, 2)}`);
+      setModelData(newModelData);
+    } else {
+      // if not an array, open the link
+      window.open(projectLinks, "_blank");
+    }
+  };
+  const handleClose = () => setOpen(false);
+
   console.log(
     `Projects Data In Listing Container: ${JSON.stringify(projectsData, null, 2)}`,
   );
@@ -18,6 +38,13 @@ const ProjectsListingContainer = ({ projectsData }) => {
 
   return (
     <Box sx={styles.ProjectsContainer}>
+      {Object.keys(modelData).length > 0 && (
+        <ProjectLinksModel
+          open={open}
+          handleClose={handleClose}
+          modelData={modelData}
+        />
+      )}
       {projectsData && projectsData.length > 0 ? (
         projectsData.map((project, i) => {
           const tagsColors = projectsTagsBackgroundColors[i];
@@ -25,7 +52,7 @@ const ProjectsListingContainer = ({ projectsData }) => {
             <Box
               sx={styles.ProjectCard}
               key={i}
-              onClick={() => window.open(project.url, "_blank")}
+              onClick={() => handleOpen(project.urls, project.projectName)}
             >
               <Typography variant="h5" component="h5" sx={styles.ProjectTitle}>
                 {project.projectName}

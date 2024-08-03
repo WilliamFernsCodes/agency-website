@@ -11,6 +11,7 @@ const theme = createTheme({
     // 800 Extra-Bold
   },
   palette: {
+    mode: "light",
     text: {
       primary: "#121315", // Default Text Color
       secondary: "#FF4F3E", // Secondary Text Color
