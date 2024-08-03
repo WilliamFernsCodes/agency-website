@@ -19,7 +19,7 @@ const About = () => {
       <SectionHeading
         value1="We Provide Best Solutions"
         value2="For Your Business"
-        border={true}
+        center={true}
       />
       <Solution />
       <ClientSatisfactionSection />

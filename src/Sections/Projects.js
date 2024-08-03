@@ -71,7 +71,7 @@ const Projects = () => {
         style={styles.ParticleOverlay}
       />
       <Box sx={styles.MainContainer}>
-        <SectionHeading value1="Our Projects" border={false} />
+        <SectionHeading value1="Our Projects" center={false} />
         <TabContext value={value}>
           <Box sx={{ mt: "3em" }}>
             <TabList

@@ -150,7 +150,6 @@ const getReplitData = async ({
             (listing) =>
               listing.status === "completed" &&
               listing.bountyHunterReview &&
-              listing.bountyHunterReview &&
               calculateBountyRating(listing) >= 4 &&
               listing.bountyHunterReview.reviewText,
           )

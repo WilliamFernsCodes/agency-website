@@ -25,7 +25,7 @@ const styles = {
       xxs: "3.5em",
     },
     position: "relative",
-    background: (theme) => theme.palette.primary.HeroGradient,
+    // background: (theme) => theme.palette.primary.HeroGradient,
   },
   HeroImage: {
     position: "absolute",
@@ -53,6 +53,23 @@ const styles = {
       xxs: "90%",
     },
     height: "80%",
+  },
+  Robot1: {
+    position: "absolute",
+    right: {
+      smd: "10%",
+      xxs: "0%",
+    },
+    bottom: "0",
+    width: {
+      lg: "38%",
+      smd: "35%",
+      xxs: "0%",
+    },
+    display: {
+      smd: "unset",
+      xxs: "none",
+    },
   },
 };
 

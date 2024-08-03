@@ -35,22 +35,7 @@ const ClientSatisfactionSection = () => {
             className="sdjh"
             sx={styles.Description}
           >
-            Simon is the <b>#1 Freelance Software Developer</b> on Replit. Here
-            are links to their freelance profiles:{" "}
-            <a
-              href="https://replit.com/@AdonisCodes"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Simon,
-            </a>{" "}
-            <a
-              target="_blank"
-              href="https://replit.com/@WilliamFerns1"
-              rel="noreferrer"
-            >
-              William
-            </a>{" "}
+            Simon is the <b>#1 Freelance Software Developer</b> on Replit.
           </Typography>
         </Box>
         <Box sx={{ my: "28px" }}>
@@ -59,12 +44,6 @@ const ClientSatisfactionSection = () => {
           </Typography>
           <OurValues />
         </Box>
-        <Link to="contact" spy={true} smooth={true} duration={500}>
-          <ButtonBase sx={styles.Button}>
-            Contact Us
-            <ArrowForwardTwoToneIcon />
-          </ButtonBase>
-        </Link>
       </Box>
       <Box component="img" src={AboutImage} alt="About" sx={styles.Image} />
     </Box>

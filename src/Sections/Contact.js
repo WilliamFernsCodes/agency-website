@@ -19,9 +19,9 @@ const Contact = () => {
       id="contact"
     >
       <SectionHeading
-        value1="Do You Have Any Projects"
-        value2="Plz Say Hello"
-        border={true}
+        value1="Do you have any project?"
+        value2="Contact Us"
+        border={false}
       />
       <Form />
     </Container>

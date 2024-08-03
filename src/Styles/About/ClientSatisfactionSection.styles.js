@@ -38,15 +38,6 @@ const styles = {
     mb: "15px",
     pl: "15px",
     position: "relative",
-    "&:after": {
-      content: '""',
-      width: "3px",
-      top: "7px",
-      bottom: "5px",
-      backgroundColor: "primary.main",
-      position: "absolute",
-      left: "0",
-    },
   },
   Features: {
     mb: "5px",

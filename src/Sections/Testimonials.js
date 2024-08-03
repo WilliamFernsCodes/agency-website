@@ -15,7 +15,7 @@ import TestimonialsSkeleton from "Components/other/skeletons/TestimonialsSkeleto
 const Testimonials = () => {
   return (
     <Box component="section" sx={styles.Container} id="testimonials">
-      <SectionHeading value1="Testimonials" border={true} />
+      <SectionHeading value1="Testimonials" center={true} />
       <Slider />
       <ListingsStats />
     </Box>
