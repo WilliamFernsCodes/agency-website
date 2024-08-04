@@ -19,7 +19,7 @@ const CompanyLogo = () => {
           }}
         >
           <Image src={Logo} width={50} height={30} alt="Logo" />
-          <Typography sx={styles.CompanyName}>Automa Software</Typography>
+          <Typography sx={styles.CompanyName}>Automa AI Software</Typography>
         </Box>
       </Link>
     </Box>

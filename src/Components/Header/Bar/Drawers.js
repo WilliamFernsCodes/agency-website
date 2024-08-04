@@ -36,10 +36,10 @@ const Drawers = ({ toggleDrawer }) => {
         </ButtonBase>
       </Box>
       <Typography variant="body1" component="p" sx={styles.Description}>
-        At Automa Software Agency, We help businesses increase productivity and
-        revenue by crafting custom AI software solutions. Working with countless
-        clients, crafting custom AI solutions, we are confident that our
-        services will help you and your business thrive.
+        At Automa AI Software, we help businesses increase productivity and
+        revenue by crafting custom AI software solutions. By developing tailored
+        AI solutions for our clients, we are confident that our services will
+        help you and your business thrive.
       </Typography>
       <Box sx={styles.Navs}>
         {Navs &&

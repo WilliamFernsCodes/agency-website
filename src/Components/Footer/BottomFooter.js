@@ -19,7 +19,7 @@ const BottomFooter = () => {
         }}
       >
         <Typography variant="body1" component="p" sx={styles.Copyright}>
-          © {new Date().getFullYear()} Automa Software Agency. All Rights
+          © {new Date().getFullYear()} Automa AI Software Agency. All Rights
           Reserved.
         </Typography>
         <SocialIconButtons />
