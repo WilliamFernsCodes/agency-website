@@ -2,7 +2,7 @@ import { Box, Stack, Typography, ButtonBase } from "@mui/material";
 import { Link as Scroll } from "react-scroll";
 
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { MapIcon } from "Utilis/Icons";
+import { MapIcon } from "Utils/Icons";
 
 //Data
 import Navs from "Data/Header/Navs.data";

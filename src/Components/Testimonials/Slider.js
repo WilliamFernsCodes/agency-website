@@ -13,7 +13,7 @@ import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import useEmblaCarousel from "embla-carousel-react";
 
 //Icons
-import { ChevronLeft, ChevronRight } from "Utilis/Icons";
+import { ChevronLeft, ChevronRight } from "Utils/Icons";
 
 //Data
 import getTestimonialsData from "Data/Testimonials/Testimonials.data";

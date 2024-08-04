@@ -1,7 +1,7 @@
 import { Box, Typography, Divider } from "@mui/material";
 
 //Styles
-import styles from "Styles/Utilis/SectionHeading.styles";
+import styles from "Styles/Utils/SectionHeading.styles";
 
 const SectionHeading = ({ value1, value2, center }) => {
   return (

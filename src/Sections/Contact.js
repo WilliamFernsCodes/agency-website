@@ -1,7 +1,7 @@
 import { Box, Container, ContainerProps } from "@mui/material";
 
 //SectionHeading
-import SectionHeading from "Utilis/SectionHeading";
+import SectionHeading from "Utils/SectionHeading";
 
 //Component
 import { InlineWidget } from "react-calendly";

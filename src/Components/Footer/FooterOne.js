@@ -5,7 +5,7 @@ import Link from "next/link";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 //Icons
-import { MapIcon, EmailIcon, TwitterIcon } from "Utilis/Icons";
+import { MapIcon, EmailIcon, TwitterIcon } from "Utils/Icons";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 //Logo

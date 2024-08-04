@@ -1,7 +1,7 @@
 import { Skeleton, Box } from "@mui/material";
 
 //SectionHeading
-import SectionHeading from "Utilis/SectionHeading";
+import SectionHeading from "Utils/SectionHeading";
 
 //Component
 import Slider from "Components/Testimonials/Slider";

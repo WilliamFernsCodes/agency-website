@@ -1,5 +1,5 @@
 //Seo
-import Heads from "Utilis/Heads";
+import Heads from "Utils/Heads";
 
 // Sections
 //

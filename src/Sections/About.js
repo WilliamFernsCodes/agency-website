@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 
 // SectionHeading
-import SectionHeading from "Utilis/SectionHeading";
+import SectionHeading from "Utils/SectionHeading";
 
 //Component
 import Solution from "Components/About/Solution";

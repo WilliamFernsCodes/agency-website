@@ -3,7 +3,7 @@ import { Container, Tab, Box, Fade, Slide } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 
 //SectionHeading
-import SectionHeading from "Utilis/SectionHeading";
+import SectionHeading from "Utils/SectionHeading";
 
 //Components
 import ProjectsListingContainer from "Components/Projects/ProjectsListingContainer";
