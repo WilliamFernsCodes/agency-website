@@ -1,30 +1,4 @@
 const styles = {
-  BookNowBtn: {
-    backgroundColor: "primary.main",
-    color: "background.default",
-    p: "12px 18px",
-    fontSize: "15px",
-    lineHeight: 1,
-    verticalAlign: "center",
-    fontWeight: 500,
-    border: "1px solid transparent",
-    transition: "0.3s ease",
-    svg: {
-      fontSize: "18px",
-      ml: "8px",
-      mb: "-1px",
-    },
-    "&:hover": {
-      backgroundColor: "transparent",
-      color: "text.primary",
-      borderColor: "text.primary",
-    },
-    display: {
-      sm: "flex",
-      xxs: "none",
-    },
-    alignItems: "center",
-  },
   ToogleButton: {
     ml: "10px",
     display: "block",

@@ -1,15 +1,11 @@
 import { useState } from "react";
 import { Stack, Box, ButtonBase, Drawer } from "@mui/material";
-import { Link } from "react-scroll";
-
-//Icons
-import ArrowForwardTwoToneIcon from "@mui/icons-material/ArrowForwardTwoTone";
-
 //Components
 import Drawers from "./Bar/Drawers";
 
 //Styles
 import styles from "Styles/Header/Bar.styles";
+import BookNowButton from "Components/other/buttons/BookNowButton.js";
 
 const Bar = () => {
   const [drawer, setDrawer] = useState(false);
@@ -24,17 +20,7 @@ const Bar = () => {
   };
   return (
     <Stack direction="row" sx={{ justifyContent: "right" }}>
-      <a
-        href="https://calendly.com/williamferns/30-min-meeting"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ textDecoration: "none" }}
-      >
-        <ButtonBase sx={styles.BookNowBtn}>
-          Book Now
-          <ArrowForwardTwoToneIcon />
-        </ButtonBase>
-      </a>
+      <BookNowButton />
       <ButtonBase
         sx={styles.ToogleButton}
         onClick={toggleDrawer(true)}
