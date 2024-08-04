@@ -3,8 +3,9 @@ const navData = [
   { name: "About", Id: "about" },
   { name: "Projects", Id: "projects" },
   { name: "Testimonials", Id: "testimonials" },
+  { name: "Blog", Id: "blog" },
   { name: "Contact", Id: "contact" },
-  { name: "Pricing", Id: "pricing" },
+  // { name: "Pricing", Id: "pricing" },
 ];
 
 export default navData;

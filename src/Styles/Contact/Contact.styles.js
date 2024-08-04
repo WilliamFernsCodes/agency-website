@@ -1,20 +1,8 @@
 import ContactBg from "Assets/contact.png";
 
 const styles = {
-  // values: {
-  //   xxs: 0, // Double Extra Small Devices
-  //   xs: 360, // Extra Small Devices
-  //   sm: 480, // Small Devices
-  //   msm: 576, // Medium Small Devices
-  //   lsm: 640, // Large Small Devices
-  //   smd: 768, // Small Medium Devices
-  //   md: 992, // Medium Devices
-  //   lg: 1200, // Large Devices
-  //   xl: 1536, // Extra Small Devices
-  //   xxl: 1980, // Double Extra Devices
-  // },
   Container: {
-    py: "5em",
+    py: { xxs: "0px", xs: "5em" },
     position: "relative",
     backgroundImage: (theme) => `url("${ContactBg}")`,
     backgroundSize: "cover",
@@ -24,6 +12,7 @@ const styles = {
     width: "100%",
     display: { xxs: "flex", xs: "block" },
     alignItems: "center",
+    minHeight: "400px",
     justifyContent: "center",
     "& #contact-heading": {
       display: { xxs: "none", xs: "block" },
@@ -35,7 +24,7 @@ const styles = {
       marginTop: { xxs: "4em !important", lsm: "0px !important" },
       overflow: "hidden",
       height: {
-        xxs: "600px !important",
+        xs: "600px !important",
         sm: "600px !important",
         lsm: "700px !important",
         md: "750px !important",

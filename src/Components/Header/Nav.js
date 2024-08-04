@@ -2,6 +2,7 @@ import { Box, ButtonBase } from "@mui/material";
 import { Link } from "react-scroll";
 
 //Data
+
 import Navs from "Data/Header/Navs.data";
 
 //Styles

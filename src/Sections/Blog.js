@@ -18,7 +18,6 @@ const Blog = () => {
     >
       <SectionHeading value1="Read Our Articles" center={false} />
       <SingleBlog />
-      <Company />
     </Container>
   );
 };
