@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
           <link rel="shortcut icon" href="/static/favicon.svg" />
           {this.props.emotionStyleTags}
         </Head>
-        <body>
+        <body style={{ overflowX: "hidden" }}>
           <Main />
           <NextScript />
         </body>

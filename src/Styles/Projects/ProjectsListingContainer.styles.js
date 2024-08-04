@@ -20,7 +20,7 @@ const styles = {
     boxShadow: (theme) =>
       `3px 4px 3px ${theme.palette.primary.box_shadow_client}`,
     "&:hover": {
-      transform: "scale(1.05)",
+      transform: { xxs: "scale(1.03)", md: "scale(1.05)" },
       boxShadow: `0px 0px 20px rgba(0, 0, 0, 0.3)`,
     },
   },
