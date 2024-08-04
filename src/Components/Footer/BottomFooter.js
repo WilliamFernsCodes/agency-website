@@ -1,98 +1,66 @@
-import { useState } from "react";
-import { Stack, Box, Divider, ButtonBase, Typography, Dialog } from "@mui/material";
+import { Box, ButtonBase, Typography, Stack, Divider } from "@mui/material";
+import Link from "next/link";
 
-//Components
-import Privacy from "./BottomFooter/Privacy";
-import Terms from "./BottomFooter/Terms";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EmailIcon from "@mui/icons-material/Email";
+import TwitterIcon from "@mui/icons-material/Twitter";
+
+//Icons
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 //Styles
-import styles from "Styles/Footer/BottomFooter.styles";
+import styles from "Styles/Footer/Footer.styles";
 
 const BottomFooter = () => {
-    const [open, setOpen] = useState(false);
-    const handleClickOpen = (name) => () => {
-        setOpen(name);
-        const header = document.querySelector('header');
-        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-        header.style.paddingRight = `${scrollBarWidth}px`;
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
-    const RemovePadding = () => {
-        const header = document.querySelector('header');
-        header.style.paddingRight = "0px";
-    }
-    return (
-        <Box>
-            <Divider sx={styles.Divider} />
-            <Box sx={{ display: { smd: "block", xxs: "none" } }}>
-                <Stack direction="row" sx={{ alignItems: "center" }}>
-                    <Typography variant="body1" component="p" sx={styles.Copyright}>
-                        © {new Date().getFullYear()} Code Station 21. All Rights Reserved.
-                    </Typography>
-                    <Stack direction="row" sx={styles.Terms}>
-                        <ButtonBase>
-                            Purchase
-                        </ButtonBase>
-                        <ButtonBase onClick={handleClickOpen('privacy')}>
-                            Privacy Policy
-                        </ButtonBase>
-                        <ButtonBase onClick={handleClickOpen('terms')}>
-                            Terms of Service
-                        </ButtonBase>
-                    </Stack>
-                </Stack>
-            </Box>
-            <Box sx={{ display: { smd: "none", xxs: "block" }, mb: "20px" }}>
-                <Stack sx={{ alignItems: "center", mb: { sm: "0px", xxs: "20px" } }}>
-                    <Stack direction="row" sx={styles.Terms}>
-                        <ButtonBase>
-                            Purchase
-                        </ButtonBase>
-                        <ButtonBase onClick={handleClickOpen('privacy')}>
-                            Privacy Policy
-                        </ButtonBase>
-                        <ButtonBase onClick={handleClickOpen('terms')}>
-                            Terms of Service
-                        </ButtonBase>
-                    </Stack>
-                    <Typography variant="body1" component="p" sx={styles.Copyright}>
-                        © {new Date().getFullYear()} Code Station 21. All Rights Reserved.
-                    </Typography>
-                </Stack>
-            </Box>
-            <Dialog
-                open={open === 'privacy'}
-                onClose={handleClose}
-                scroll="paper"
-                maxWidth="md"
-                TransitionProps={{
-                    onExited: () => {
-                        RemovePadding();
-                    }
-                }}
-            >
-                <Privacy
-                    handleClose={handleClose}
-                />
-            </Dialog>
-            <Dialog
-                open={open === 'terms'}
-                onClose={handleClose}
-                scroll="paper"
-                maxWidth="md"
-                TransitionProps={{
-                    onExited: () => {
-                        RemovePadding();
-                    }
-                }}
-            >
-                <Terms
-                    handleClose={handleClose}
-                />
-            </Dialog>
-        </Box>
-    );
+  return (
+    <Box>
+      <Divider sx={styles.Divider} />
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: { xxs: "column", md: "row" },
+          padding: "1.5em",
+          gap: "15px",
+        }}
+      >
+        <Typography variant="body1" component="p" sx={styles.Copyright}>
+          © {new Date().getFullYear()} Automa Software Agency. All Rights
+          Reserved.
+        </Typography>
+        <Stack direction="row" sx={styles.Social}>
+          <Link href="mailto:business@williamferns.org">
+            <a target="_blank">
+              <ButtonBase>
+                <EmailIcon />
+              </ButtonBase>
+            </a>
+          </Link>
+          <Link href="https://github.com/WilliamFernsCodes/">
+            <a target="_blank">
+              <ButtonBase>
+                <GitHubIcon />
+              </ButtonBase>
+            </a>
+          </Link>
+          <Link href="https://twitter.com/willfernsdev">
+            <a target="_blank">
+              <ButtonBase>
+                <TwitterIcon />
+              </ButtonBase>
+            </a>
+          </Link>
+          <Link href="https://www.linkedin.com/in/william-ferns-12670a2b6/">
+            <a target="_blank">
+              <ButtonBase>
+                <LinkedInIcon />
+              </ButtonBase>
+            </a>
+          </Link>
+        </Stack>
+      </Box>
+    </Box>
+  );
 };
 export default BottomFooter;
