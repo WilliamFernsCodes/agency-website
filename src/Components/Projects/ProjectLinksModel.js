@@ -30,7 +30,6 @@ const OrderedList = styled(List)(({ theme }) => ({
 }));
 
 const LinksList = ({ linksData }) => {
-  console.log(`Links Data: ${JSON.stringify(linksData, null, 2)}`);
   return (
     <OrderedList>
       {linksData &&

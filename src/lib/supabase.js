@@ -38,7 +38,6 @@ const getOurTeamData = async () => {
     console.error(error.message);
     return [];
   }
-  console.log(`Data From Supabase: ${JSON.stringify(data, null, 2)}`);
   const finalData = data.map((member) => {
     const memberCopy = JSON.parse(JSON.stringify(member));
     const itemsToRemove = ["social_links", "image_path"];
@@ -55,7 +54,6 @@ const getOurTeamData = async () => {
       ),
     };
   });
-  console.log(`Final Data: ${JSON.stringify(finalData, null, 2)}`);
   return finalData;
 };
 

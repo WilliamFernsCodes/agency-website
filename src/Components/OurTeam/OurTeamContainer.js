@@ -22,9 +22,6 @@ const OurTeamContainer = () => {
   useEffect(() => {
     const getData = async () => {
       const teamData = await getOurTeamData();
-      console.log(
-        `Team Data In Container: ${JSON.stringify(teamData, null, 2)}`,
-      );
       setOurTeamData(teamData);
     };
     getData();
@@ -45,7 +42,6 @@ const MemberContainer = ({ member, isSMUp }) => {
     threshold: 0.1, // Adjust this value to control when the fade-in should start
   });
   const randomClass = randomItem(["slide-in-right", "slide-in-left"]);
-  console.log(`Random Class: ${randomClass}`);
   return (
     <Fade in={inView} timeout={2000}>
       <Box

@@ -18,7 +18,6 @@ const ProjectsListingContainer = ({ projectsData }) => {
         linksData: projectLinks.map((link) => JSON.parse(link)),
         projectName,
       };
-      console.log(`Model Data: ${JSON.stringify(newModelData, null, 2)}`);
       setModelData(newModelData);
     } else {
       // if not an array, open the link
@@ -27,9 +26,6 @@ const ProjectsListingContainer = ({ projectsData }) => {
   };
   const handleClose = () => setOpen(false);
 
-  console.log(
-    `Projects Data In Listing Container: ${JSON.stringify(projectsData, null, 2)}`,
-  );
   const projectsTagsBackgroundColors = projectsData.map((project) => {
     if ("tags" in project) {
       return getTagsBackgroundColors().slice(0, project.tags.length);
