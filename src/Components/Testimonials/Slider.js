@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import {
+  Fade,
   Link,
   Box,
   ButtonBase,
@@ -8,6 +9,7 @@ import {
   Rating,
 } from "@mui/material";
 
+import { useInView } from "react-intersection-observer";
 import { capitalizeFirstLetter, shortenText } from "lib/utils";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import useEmblaCarousel from "embla-carousel-react";
@@ -27,6 +29,10 @@ const Sliders = () => {
   const [viewportRef, embla] = useEmblaCarousel({
     dragFree: true,
     containScroll: "trimSnaps",
+  });
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
   });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
@@ -63,81 +69,93 @@ const Sliders = () => {
     }
   }, [embla, testimonials]);
   return (
-    <Box sx={{ mt: "2em" }}>
-      <Box className="embla" sx={styles.Embla}>
-        <Box className="embla__viewport" ref={viewportRef}>
-          <Box className="embla__container" sx={styles.EmblaContainer}>
-            {testimonials && testimonials.length > 0 ? (
-              testimonials.map((testimonial, i) => {
-                const review = shortenText(testimonial.review, 70);
-                const title = shortenText(testimonial.title, 50);
-                const name = testimonial.name;
-                const backgroundColor = "0D8ABC";
-                const textColor = "fff";
-                const avatarURL = testimonial.avatarURL.endsWith(
-                  "?d=blank&s=256",
-                )
-                  ? `https://ui-avatars.com/api/?name=${capitalizeFirstLetter(name.slice(0, 3))}+${capitalizeFirstLetter(name.slice(1, 3))}&background=${backgroundColor}&color=${textColor}`
-                  : testimonial.avatarURL;
+    <Fade in={inView} timeout={2000}>
+      <Box
+        ref={ref}
+        className={inView ? "slide-in-left" : ""}
+        sx={{ mt: "2em" }}
+      >
+        <Box className="embla" sx={styles.Embla}>
+          <Box className="embla__viewport" ref={viewportRef}>
+            <Box className="embla__container" sx={styles.EmblaContainer}>
+              {testimonials && testimonials.length > 0 ? (
+                testimonials.map((testimonial, i) => {
+                  const review = shortenText(testimonial.review, 70);
+                  const title = shortenText(testimonial.title, 50);
+                  const name = testimonial.name;
+                  const backgroundColor = "0D8ABC";
+                  const textColor = "fff";
+                  const avatarURL = testimonial.avatarURL.endsWith(
+                    "?d=blank&s=256",
+                  )
+                    ? `https://ui-avatars.com/api/?name=${capitalizeFirstLetter(name.slice(0, 3))}+${capitalizeFirstLetter(name.slice(1, 3))}&background=${backgroundColor}&color=${textColor}`
+                    : testimonial.avatarURL;
 
-                return (
-                  <Box
-                    className="embla__slide"
-                    sx={{ ...styles.EmblaSlide, ...styles.EmblaSlideBase }}
-                    key={i}
-                  >
-                    <Rating
-                      name="half-rating-read"
-                      size="large"
-                      defaultValue={Number(testimonial.star)}
-                      precision={0.5}
-                      readOnly
-                    />
-                    <Box sx={styles.QuoteContainer}>
-                      <Typography variant="body1" component="p">
-                        {review}
-                      </Typography>
-                    </Box>
-                    <Box sx={styles.PosterContainer}>
-                      <Box sx={styles.PosterInfo}>
-                        <Typography className="poster-name" component="p">
-                          {name}
+                  return (
+                    <Box
+                      className="embla__slide"
+                      sx={{ ...styles.EmblaSlide, ...styles.EmblaSlideBase }}
+                      key={i}
+                    >
+                      <Rating
+                        name="half-rating-read"
+                        size="large"
+                        defaultValue={Number(testimonial.star)}
+                        precision={0.5}
+                        readOnly
+                      />
+                      <Box sx={styles.QuoteContainer}>
+                        <Typography variant="body1" component="p">
+                          {review}
                         </Typography>
-                        <Typography
-                          component="p"
-                          className="listing-information"
+                      </Box>
+                      <Box sx={styles.PosterContainer}>
+                        <Box sx={styles.PosterInfo}>
+                          <Typography className="poster-name" component="p">
+                            {name}
+                          </Typography>
+                          <Typography
+                            component="p"
+                            className="listing-information"
+                          >
+                            <span className="amount">
+                              {testimonial.amount}$
+                            </span>
+                            {` - '${title}'`}
+                          </Typography>
+                        </Box>
+                        <Box sx={styles.AvatarContainer}>
+                          <Avatar
+                            alt={name}
+                            src={avatarURL}
+                            className="avatar"
+                          />
+                        </Box>
+                      </Box>
+                      {"link" in testimonial && (
+                        <Link
+                          href={testimonial.link}
+                          target="_blank"
+                          sx={styles.ViewListingText}
                         >
-                          <span className="amount">{testimonial.amount}$</span>
-                          {` - '${title}'`}
-                        </Typography>
-                      </Box>
-                      <Box sx={styles.AvatarContainer}>
-                        <Avatar alt={name} src={avatarURL} className="avatar" />
-                      </Box>
+                          View Listing
+                        </Link>
+                      )}
                     </Box>
-                    {"link" in testimonial && (
-                      <Link
-                        href={testimonial.link}
-                        target="_blank"
-                        sx={styles.ViewListingText}
-                      >
-                        View Listing
-                      </Link>
-                    )}
-                  </Box>
-                );
-              })
-            ) : (
-              <TestimonialsSkeleton />
-            )}
+                  );
+                })
+              ) : (
+                <TestimonialsSkeleton />
+              )}
+            </Box>
+          </Box>
+          <Box sx={styles.Navigation}>
+            <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+            <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
           </Box>
         </Box>
-        <Box sx={styles.Navigation}>
-          <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-          <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-        </Box>
       </Box>
-    </Box>
+    </Fade>
   );
 };
 export default Sliders;

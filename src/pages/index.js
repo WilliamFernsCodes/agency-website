@@ -10,6 +10,7 @@ import {
   Projects,
   Skills,
   Testimonials,
+  OurTeam,
   Blog,
   Contact,
   Footer,
@@ -25,6 +26,7 @@ const index = () => {
       <Skills />
       <Testimonials />
       <Projects />
+      <OurTeam />
       <Blog />
       <Contact />
       <Footer />

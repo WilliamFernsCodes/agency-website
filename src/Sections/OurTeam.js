@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 import SectionHeading from "Utils/SectionHeading";
 
 //Component
-import BlogContainer from "Components/Blog/BlogContainer";
+import { OurTeamContainer } from "Components/OurTeam";
 
 const Blog = () => {
   return (
@@ -15,8 +15,8 @@ const Blog = () => {
       sx={{ py: "5em" }}
       id="blog"
     >
-      <SectionHeading value1="Read Our Articles" center={false} />
-      <BlogContainer />
+      <SectionHeading value1="Our Team" center={false} />
+      <OurTeamContainer />
     </Container>
   );
 };

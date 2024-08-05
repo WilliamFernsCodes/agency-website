@@ -29,7 +29,6 @@ const Projects = () => {
     const filteredData = data.filter((curElem) => {
       return curElem.projectType === filterItem;
     });
-    console.log(`Filtered Data: ${JSON.stringify(filteredData, null, 2)}`);
     setItems(filteredData);
   };
   useEffect(() => {

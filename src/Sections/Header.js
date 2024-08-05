@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Container, Box, Grid } from "@mui/material";
+import { Fade, Container, Box, Grid } from "@mui/material";
+import { useInView } from "react-intersection-observer";
 
 //Components
 import Logo from "Components/Header/Logo";
@@ -16,31 +17,39 @@ const Header = () => {
       setScroll(window.scrollY > 50);
     });
   }, []);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
-    <Box
-      className={scroll ? "sticky" : ""}
-      sx={styles.Container}
-      component="header"
-    >
-      <Container maxWidth={false} disableGutters>
-        <Grid container spacing={2} sx={{ alignItems: "center" }}>
-          <Grid item md={3} xxs={6}>
-            <Logo />
+    <Fade in={inView} timeout={2000}>
+      <Box
+        className={`sticky${inView ? " fade-in-left" : ""}`}
+        sx={styles.Container}
+        component="header"
+        ref={ref}
+      >
+        <Container maxWidth={false} disableGutters>
+          <Grid container spacing={2} sx={{ alignItems: "center" }}>
+            <Grid item md={3} xxs={6}>
+              <Logo />
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xxs={0}
+              sx={{ display: { md: "block", xxs: "none" } }}
+            >
+              <Nav />
+            </Grid>
+            <Grid item md={3} xxs={6}>
+              <Bar />
+            </Grid>
           </Grid>
-          <Grid
-            item
-            md={6}
-            xxs={0}
-            sx={{ display: { md: "block", xxs: "none" } }}
-          >
-            <Nav />
-          </Grid>
-          <Grid item md={3} xxs={6}>
-            <Bar />
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
+    </Fade>
   );
 };
 export default Header;

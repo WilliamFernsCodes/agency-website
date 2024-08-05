@@ -1,0 +1,44 @@
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%); /* Adjust starting position */
+    opacity: 0; /* Ensure it starts invisible */
+  }
+  to {
+    transform: translateX(0); /* End position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%); /* Adjust starting position */
+    opacity: 0; /* Ensure it starts invisible */
+  }
+  to {
+    transform: translateX(0); /* End position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(30%); /* Adjust starting position */
+    opacity: 0; /* Ensure it starts invisible */
+  }
+  to {
+    transform: translateY(0); /* End position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+.slide-in-bottom {
+  animation: slideInBottom 1s ease-out; /* Adjust duration and easing */
+}
+
+.slide-in-right {
+  animation: slideInRight 1s ease-out; /* Adjust duration and easing */
+}
+
+.slide-in-left {
+  animation: slideInLeft 1s ease-out; /* Adjust duration and easing */
+}

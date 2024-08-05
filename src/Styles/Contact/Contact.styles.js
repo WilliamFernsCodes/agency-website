@@ -1,4 +1,4 @@
-import ContactBg from "Assets/contact.png";
+import ContactBg from "Assets/contact/contact.png";
 
 const styles = {
   Container: {
@@ -10,15 +10,18 @@ const styles = {
     backgroundRepeat: "no-repeat",
     gap: "3em",
     width: "100%",
-    display: { xxs: "flex", xs: "block" },
+    display: { xxs: "flex", sm: "block" },
     alignItems: "center",
     minHeight: "400px",
     justifyContent: "center",
     "& #contact-heading": {
-      display: { xxs: "none", xs: "block" },
+      display: { xxs: "none", sm: "block" },
+    },
+    "& #inline-widget-container": {
+      display: { xxs: "none", sm: "block" },
     },
     "& .calendly-inline-widget": {
-      display: { xxs: "none", xs: "block" },
+      display: { xxs: "none", sm: "block" },
       borderRadius: { xxs: "0px", mxs: "10px" },
       boxShadow: { mxs: `0px 0px 20px rgba(0, 0, 0, 0.3)`, lsm: "unset" },
       marginTop: { xxs: "4em !important", lsm: "0px !important" },

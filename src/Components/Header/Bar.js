@@ -18,6 +18,7 @@ const Bar = () => {
     }
     setDrawer(open);
   };
+
   return (
     <Stack direction="row" sx={{ justifyContent: "right" }}>
       <BookNowButton />
