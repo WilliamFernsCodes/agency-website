@@ -19,10 +19,9 @@ const styles = {
       `12px 6px 40px ${theme.palette.primary.box_show_blog}`,
     borderRadius: "12px",
     overflow: "hidden",
-    // set transition .5 ease in and out
-    transition: "all .5s ease-in-out, box-shadow .5s ease-in-out",
+    transition: ".3s ease-in-out !important",
     "&:hover": {
-      transform: "scale(1.05)",
+      transform: "scale(1.025)",
       boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.2)",
     },
   },
