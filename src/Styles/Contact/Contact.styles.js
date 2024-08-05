@@ -17,6 +17,9 @@ const styles = {
     "& #contact-heading": {
       display: { xxs: "none", sm: "block" },
     },
+    "& #inline-widget-container": {
+      display: { xxs: "none", sm: "block" },
+    },
     "& .calendly-inline-widget": {
       display: { xxs: "none", sm: "block" },
       borderRadius: { xxs: "0px", mxs: "10px" },
