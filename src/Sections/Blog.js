@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 import SectionHeading from "Utils/SectionHeading";
 
 //Component
-import SingleBlog from "Components/Blog/SingleBlog";
+import BlogContainer from "Components/Blog/BlogContainer";
 
 const Blog = () => {
   return (
@@ -16,7 +16,7 @@ const Blog = () => {
       id="blog"
     >
       <SectionHeading value1="Read Our Articles" center={false} />
-      <SingleBlog />
+      <BlogContainer />
     </Container>
   );
 };
