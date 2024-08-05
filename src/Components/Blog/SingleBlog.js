@@ -1,19 +1,8 @@
-import { useState } from "react";
-import {
-  Box,
-  Grid,
-  Stack,
-  Typography,
-  ButtonBase,
-  Dialog,
-} from "@mui/material";
+import { Box, Grid, Stack, Typography, ButtonBase } from "@mui/material";
 
 //Icons
 import { ClendarIcon } from "Utils/Icons";
 import ArrowForwardTwoToneIcon from "@mui/icons-material/ArrowForwardTwoTone";
-
-//Components
-import Dialogs from "./SingleBlog/Dialogs";
 
 //Data
 import Blogs from "Data/Blog/Blogs.data";
@@ -22,21 +11,6 @@ import Blogs from "Data/Blog/Blogs.data";
 import styles from "Styles/Blog/SingleBlog.styles";
 
 const SingleBlog = () => {
-  const [open, setOpen] = useState(false);
-  const handleClickOpen = (index) => () => {
-    setOpen(index);
-    const header = document.querySelector("header");
-    const scrollBarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
-    header.style.paddingRight = `${scrollBarWidth}px`;
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const RemovePadding = () => {
-    const header = document.querySelector("header");
-    header.style.paddingRight = "0px";
-  };
   return (
     <Box sx={{ mt: "4rem", mb: "5.5em" }}>
       <Grid container spacing={4}>
@@ -73,23 +47,10 @@ const SingleBlog = () => {
                       {blog.time}
                     </Typography>
                   </Stack>
-                  <ButtonBase sx={styles.Button} onClick={handleClickOpen(i)}>
+                  <ButtonBase sx={styles.Button}>
                     Read More
                     <ArrowForwardTwoToneIcon />
                   </ButtonBase>
-                  <Dialog
-                    open={open === i}
-                    onClose={handleClose}
-                    scroll="paper"
-                    maxWidth="md"
-                    TransitionProps={{
-                      onExited: () => {
-                        RemovePadding();
-                      },
-                    }}
-                  >
-                    <Dialogs blog={blog} handleClose={handleClose} />
-                  </Dialog>
                 </Box>
               </Box>
             </Grid>

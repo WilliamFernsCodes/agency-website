@@ -1,4 +1,4 @@
-import ContactBg from "Assets/contact.png";
+import ContactBg from "Assets/contact/contact.png";
 
 const styles = {
   Container: {

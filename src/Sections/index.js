@@ -1,5 +1,6 @@
 import About from "./About";
 import Blog from "./Blog";
+import OurTeam from "./OurTeam";
 import Testimonials from "./Testimonials";
 import Contact from "./Contact";
 import Footer from "./Footer";
@@ -18,4 +19,5 @@ export {
   Hero,
   Projects,
   Skills,
+  OurTeam,
 };
