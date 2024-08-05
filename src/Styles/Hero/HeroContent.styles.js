@@ -38,7 +38,7 @@ const styles = {
     borderRadius: "5px",
     fontSize: "14px",
     fontWeight: 500,
-    transition: "0.3s ease",
+    transition: "0.3s ease !important",
     svg: {
       color: "background.default",
       fontSize: "17px",

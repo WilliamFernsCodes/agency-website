@@ -10,7 +10,7 @@ const styles = {
     width: { xxs: "100%", xs: "300px" },
     display: "flex",
     cursor: "pointer",
-    transition: "all 0.3s ease-in-out",
+    transition: "all 0.3s ease-in-out !important",
     alignItems: "center",
     flexDirection: "column",
     backgroundColor: "#fff",
