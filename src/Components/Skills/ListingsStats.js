@@ -36,8 +36,7 @@ const ListingsStats = () => {
       <Box
         sx={styles.StatsContainer}
         ref={ref}
-        className={inView ? "slide-in-right" : ""}
-      >
+        className={inView ? "slide-in-bottom" : ""} >
         <Divider sx={styles.Divider} />
         <Box sx={styles.Stats}>
           <Box sx={styles.CountUpsParentContainer}>
