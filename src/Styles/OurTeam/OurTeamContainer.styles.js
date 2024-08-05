@@ -5,7 +5,7 @@ const styles = {
     mb: "5.5em",
     display: "flex",
     justifyContent: "center",
-    gap: { xxs: "16px", md: "32px" },
+    gap: { xxs: "16px", md: "25px" },
     flexWrap: "wrap",
   },
   BoxContainer: {
@@ -13,16 +13,16 @@ const styles = {
     alignItems: "center",
     width: "fit-content",
     flexDirection: "column",
-    maxWidth: "350px",
+    maxWidth: "370px",
     backgroundColor: "#fff",
     boxShadow: (theme) =>
       `12px 6px 40px ${theme.palette.primary.box_show_blog}`,
-    borderRadius: "12px",
+    borderRadius: "30px",
     overflow: "hidden",
     transition: ".3s ease-in-out !important",
     "&:hover": {
-      transform: "scale(1.025)",
-      boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.2)",
+      transform: "scale(1.02)",
+      boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.15)",
     },
   },
   ImageBox: {
@@ -81,11 +81,10 @@ const styles = {
       width: "30px",
       height: "30px",
       // set transition to .5s ease in out
-      transition: "transform .3s ease-in-out",
+      transition: "transform .5s ease-in-out",
     },
     "& svg:hover": {
-      // transform: "rotate(360deg)",
-      transform: "scale(1.2)",
+      transform: "rotate(360deg)",
     },
   },
 };
