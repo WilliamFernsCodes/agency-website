@@ -21,6 +21,11 @@ function getTagsBackgroundColors() {
   return shuffledColors;
 }
 
+const randomItem = (itemsArray) => {
+  const randomIndex = Math.floor(Math.random() * itemsArray.length);
+  return itemsArray[randomIndex];
+};
+
 const createSupabase = (key) => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_BASE_URL;
   const supabase = createClient(supabaseUrl, key);
@@ -33,4 +38,5 @@ export {
   capitalizeFirstLetter,
   getTagsBackgroundColors,
   createSupabase,
+  randomItem,
 };

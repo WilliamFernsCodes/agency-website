@@ -7,7 +7,8 @@ import { CacheProvider } from "@emotion/react";
 import theme from "Theme";
 import createEmotionCache from "Emotion";
 const clientSideEmotionCache = createEmotionCache();
-
+// import css file
+import "./styles.css";
 // Fonts
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
