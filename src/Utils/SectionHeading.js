@@ -11,11 +11,7 @@ const SectionHeading = ({ value1, value2, center }) => {
     threshold: 0.1, // Adjust this value to control when the fade-in should start
   });
 
-  const randomClass = randomItem([
-    "slide-in-right",
-    "slide-in-left",
-    "slide-in-bottom",
-  ]);
+  const randomClass = randomItem(["slide-in-left", "slide-in-bottom"]);
   return (
     <Fade in={inView} timeout={2000}>
       <Box ref={ref} sx={{ textAlign: `${center ? "center" : "left"}` }}>
