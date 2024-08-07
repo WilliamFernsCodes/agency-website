@@ -39,4 +39,4 @@ npm run dev
 
 Do you want us to help your business thrive by crafting custom AI tools and automation software solutions? Do you have any software idea that you want us to work on, whether that be a website or backend script?
 
-Let's go on a quick call: https://calendly.com/williamferns/30-min-meeting
+Let's go on a quick call: https://calendly.com/automa-ai-software/30-min-meeting

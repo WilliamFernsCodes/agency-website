@@ -12,20 +12,28 @@ import { useInView } from "react-intersection-observer";
 import { ClendarIcon } from "Utils/Icons";
 import ArrowForwardTwoToneIcon from "@mui/icons-material/ArrowForwardTwoTone";
 import { randomItem } from "lib/utils";
+import { useState, useEffect } from "react";
 
-//Data
-import Blogs from "Data/Blog/Blogs.data";
-
+import { getBlogs } from "lib/supabase";
 //Styles
 import styles from "Styles/Blog/BlogContainer.styles";
 
 const BlogContainer = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const getAllBlogs = async () => {
+      const allBlogs = await getBlogs();
+      setBlogs(allBlogs);
+    };
+    getAllBlogs();
+  }, []);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box sx={styles.BlogsContainer}>
-      {Blogs &&
-        Blogs.map((blog, i) => (
+      {blogs &&
+        blogs.map((blog, i) => (
           <BlogItem key={i} blog={blog} isMobile={isMobile} />
         ))}
     </Box>

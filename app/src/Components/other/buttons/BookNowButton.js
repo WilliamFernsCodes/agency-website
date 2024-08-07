@@ -30,7 +30,7 @@ const BookNowButton = ({ display = { xxs: "none", sm: "flex" } }) => {
 
   return (
     <a
-      href="https://calendly.com/williamferns/30-min-meeting"
+      href="https://calendly.com/automa-ai-software/30-min-meeting"
       target="_blank"
       rel="noopener noreferrer"
       style={{ textDecoration: "none" }}
