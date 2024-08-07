@@ -66,7 +66,7 @@ const getBlogs = async () => {
   ];
   const { data, error } = await supabase
     .from("blogs")
-    .select(", ".join(columnsToSelect));
+    .select(columnsToSelect.join(", "));
   if (error) {
     console.error(error.message);
     return [];
