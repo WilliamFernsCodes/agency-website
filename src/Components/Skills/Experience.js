@@ -33,7 +33,7 @@ const Experience = () => {
         </Typography>
         <Box sx={styles.ButtonContainer}>
           <Link href={Experiences.btnUrl}>
-            <a>
+            <a target="_blank">
               <ButtonBase sx={styles.Button}>
                 {Experiences.btnText}
                 <ArrowForwardTwoToneIcon />

@@ -3,7 +3,7 @@ const data = {
   description:
     "No tech background needed. We simplify everything—recruiting talent, project planning, and team management. Invest in your business, and we'll handle the rest. Simple as that.",
   btnText: "Book a Free Consultation",
-  btnUrl: "https://calendly.com/williamferns/30-min-meeting",
+  btnUrl: "https://calendly.com/automa-ai-software/30-min-meeting",
 };
 
 export default data;

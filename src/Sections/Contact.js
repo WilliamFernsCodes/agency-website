@@ -41,7 +41,7 @@ const Contact = () => {
           id="inline-widget-container"
           className={inView ? "slide-in-bottom" : ""}
         >
-          <InlineWidget url="https://calendly.com/williamferns/30-min-meeting?hide_gdpr_banner=1&hide_event_type_details=1" />
+          <InlineWidget url="https://calendly.com/automa-ai-software/30-min-meeting?hide_gdpr_banner=1&hide_event_type_details=1" />
         </Box>
       </Fade>
     </Container>
