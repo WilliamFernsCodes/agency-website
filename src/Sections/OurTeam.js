@@ -13,7 +13,7 @@ const Blog = () => {
       disableGutters
       as="section"
       sx={{ py: "5em" }}
-      id="blog"
+      id="our-team"
     >
       <SectionHeading value1="Our Team" center={false} />
       <OurTeamContainer />

@@ -57,4 +57,30 @@ const getOurTeamData = async () => {
   return finalData;
 };
 
-export { getProjects, getOurTeamData };
+const getBlogs = async () => {
+  const columnsToSelect = [
+    "blog_title",
+    "posting_date",
+    "image_path",
+    "blog_link",
+  ];
+  const { data, error } = await supabase
+    .from("blogs")
+    .select(", ".join(columnsToSelect));
+  if (error) {
+    console.error(error.message);
+    return [];
+  }
+
+  const finalData = data.map((blog) => {
+    return {
+      blogTitle: blog.blog_title,
+      postingDate: blog.posting_date,
+      imagePath: `${bucketURL}/${blog.image_path}`,
+      blogLink: blog.blog_link,
+    };
+  });
+  return finalData;
+};
+
+export { getProjects, getOurTeamData, getBlogs };
