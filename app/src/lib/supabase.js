@@ -40,6 +40,10 @@ const getBountyHuntersInfo = async () => {
   return JSON.parse(userInfo);
 };
 
+const getHuntersStats = async () => {
+  const { data, error } = await supabase.from("user_info").select("*");
+  return data;
+};
 const getProjects = async () => {
   const { data, error } = await supabase.from("projects").select("*");
   if (error) {
@@ -125,4 +129,5 @@ export {
   getProjects,
   getOurTeamData,
   getBlogs,
+  getHuntersStats,
 };

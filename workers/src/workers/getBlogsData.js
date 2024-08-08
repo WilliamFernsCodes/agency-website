@@ -65,27 +65,29 @@ const getBlogsData = async (debugging = false) => {
           throw new Error("Unsupported time unit");
       }
     } else {
-      let [month, day, year] = postedAt.replace(",", "").split(" ");
-      const monthIndex = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ].indexOf(month);
-      if (!year) {
-        year = now.getFullYear();
+      if ("Just now" !== postedAt) {
+        let [month, day, year] = postedAt.replace(",", "").split(" ");
+        const monthIndex = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ].indexOf(month);
+        if (!year) {
+          year = now.getFullYear();
+        }
+        now.setFullYear(parseInt(year, 10));
+        now.setMonth(monthIndex);
+        now.setDate(parseInt(day, 10));
       }
-      now.setFullYear(parseInt(year, 10));
-      now.setMonth(monthIndex);
-      now.setDate(parseInt(day, 10));
     }
 
     return {
