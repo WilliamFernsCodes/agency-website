@@ -30,7 +30,7 @@ const runner = async () => {
 
   await updateTestimonials(testimonials.flat());
 
-  const blogsData = await getBlogsData(true);
+  const blogsData = await getBlogsData();
   await updateBlogsData(blogsData);
 };
 

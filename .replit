@@ -1,0 +1,10 @@
+modules = ["nodejs-20", "web"]
+# run = "cd workers && npm install && node ./src/runner.js"
+run = "cd ./workers ; npm install ; node ./src/runner.js"
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+# run = "cd workers && npm install && node ./src/runner.js"
+run = "cd ./workers ; npm install ; node ./src/runner.js"
+deploymentTarget = "scheduled"
