@@ -3,7 +3,6 @@ import {
   useTheme,
   Fade,
   Box,
-  Stack,
   Typography,
   ButtonBase,
 } from "@mui/material";
@@ -31,12 +30,37 @@ const BlogContainer = () => {
   }, []);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
   return (
     <Box sx={styles.BlogsContainer}>
       {blogs &&
         blogs.map((blog, i) => (
           <BlogItem key={i} blog={blog} isMobile={isMobile} />
         ))}
+
+      <Fade in={inView} timeout={2000}>
+        <Link
+          ref={ref}
+          className={inView ? "slide-in-bottom" : ""}
+          href="https://medium.com/@business_76456"
+        >
+          <a
+            target="_blank"
+            // ref={ref}
+            // className={inView ? "slide-in-bottom" : ""}
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <ButtonBase sx={styles.Button}>
+              See More Blogs
+              <ArrowForwardTwoToneIcon />
+            </ButtonBase>
+          </a>
+        </Link>
+      </Fade>
     </Box>
   );
 };

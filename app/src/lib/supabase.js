@@ -112,16 +112,15 @@ const getBlogs = async () => {
   ];
   const { data, error } = await supabase
     .from("blogs")
-    .select(columnsToSelect.join(", "));
+    .select(columnsToSelect.join(", "))
+    .order("posting_date", { ascending: false })
+    .limit(6);
   if (error) {
     console.error(error.message);
     return [];
   }
 
-  // order the data so that the newest blogs are first.
-  return data.sort((a, b) => {
-    return new Date(b.posting_date) - new Date(a.posting_date);
-  });
+  return data;
 };
 
 export {
