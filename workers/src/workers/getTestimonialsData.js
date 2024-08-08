@@ -1,7 +1,4 @@
 const getReplitData = async ({ users }) => {
-  if (!getBounties && !getUserInfo) {
-    throw new Error("Please select either getBounties or getUserInfo, or both");
-  }
   const finalUsersData = [];
   for (const user of users) {
     const userData = {};
@@ -163,8 +160,8 @@ const getReplitData = async ({ users }) => {
       allBountiesData = [...allBountiesData, ...completedWithReviewsBounties];
     }
     userData.userBounties = allBountiesData;
+    finalUsersData.push(userData);
   }
-  finalUsersData.push(userData);
 
   return finalUsersData;
 };

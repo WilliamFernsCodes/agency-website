@@ -2,14 +2,17 @@
   "name": "workers",
   "version": "1.0.0",
   "main": "getReplitData.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@supabase/supabase-js": "^2.45.1",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.5"
   }
 }

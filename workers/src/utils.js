@@ -27,7 +27,7 @@ const randomItem = (itemsArray) => {
 };
 
 const createSupabase = (key) => {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_BASE_URL;
+  const supabaseUrl = process.env.SUPABASE_BASE_URL;
   const supabase = createClient(supabaseUrl, key);
 
   return supabase;

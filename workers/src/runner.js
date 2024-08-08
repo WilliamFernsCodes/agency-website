@@ -1,11 +1,10 @@
-import { getBlogsData, getTestimonialsData } from "./workers";
+import { getBlogsData, getTestimonialsData } from "./workers/index.js";
 import {
   updateTestimonials,
   updateUserInfo,
   getFromValuesTable,
-  updateTestimonials,
   updateBlogsData,
-} from "./supabase";
+} from "./supabase.js";
 
 const runner = async () => {
   const bountyHunters = JSON.parse(await getFromValuesTable("bounty_hunters"));
@@ -31,7 +30,7 @@ const runner = async () => {
 
   await updateTestimonials(testimonials.flat());
 
-  const blogsData = await getBlogsData();
+  const blogsData = await getBlogsData(true);
   await updateBlogsData(blogsData);
 };
 
