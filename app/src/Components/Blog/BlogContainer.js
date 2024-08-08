@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useInView } from "react-intersection-observer";
 //Icons
-import { ClendarIcon } from "Utils/Icons";
+import { CalendarIcon } from "Utils/Icons";
 import ArrowForwardTwoToneIcon from "@mui/icons-material/ArrowForwardTwoTone";
 import { randomItem } from "lib/utils";
 import { useState, useEffect } from "react";
@@ -46,6 +46,12 @@ const BlogItem = ({ blog, isMobile }) => {
     threshold: 0.1,
   });
   const randomClass = randomItem(["slide-in-right", "slide-in-left"]);
+  const postingDate = blog.posting_date;
+  // the posting date format is like this as a string: "2024-08-07"
+  const date = new Date(postingDate);
+  // conver the date to "7 August, 2024"
+  const formattedDate = date.toLocaleString("en-US", { dateStyle: "medium" });
+  console.log(`Blog: ${JSON.stringify(blog, null, 2)}`);
   return (
     <Fade in={inView} timeout={2000}>
       <Box
@@ -61,23 +67,20 @@ const BlogItem = ({ blog, isMobile }) => {
       >
         <Box
           component="img"
-          src={blog.image}
-          alt={blog.title}
+          src={blog.image_url}
+          alt={blog.blog_title}
           sx={styles.Image}
         />
         <Box sx={styles.Content}>
-          <Typography variant="body1" component="p" sx={styles.Category}>
-            {blog.category}
-          </Typography>
           <Typography variant="h6" component="h6" sx={styles.Title}>
-            {blog.title}
+            {blog.blog_title}
           </Typography>
           <Stack direction="row" sx={{ alignItems: "center" }}>
             <Box sx={styles.TimeIcon}>
-              <ClendarIcon />
+              <CalendarIcon />
             </Box>
             <Typography variant="body1" component="p" sx={styles.TimeText}>
-              {blog.time}
+              {formattedDate}
             </Typography>
           </Stack>
           <ButtonBase sx={styles.Button}>

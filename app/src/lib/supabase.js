@@ -18,7 +18,7 @@ const getTestimonialsData = async () => {
     .from("testimonials")
     .select(columnsToSelect.join(", "));
   if (error) {
-    console.error(error.message);
+    console.error(`Error getting Testimonials Data: ${error.message}`);
     return [];
   }
   return data;
@@ -30,7 +30,8 @@ const getFromValuesTable = async (id) => {
     .select("value")
     .eq("id", id);
   if (error) {
-    throw new Error(error.message);
+    console.error(`Error getting values data (id : ${id}): ${error.message}`);
+    return [];
   }
   return data[0].value;
 };
@@ -42,12 +43,17 @@ const getBountyHuntersInfo = async () => {
 
 const getHuntersStats = async () => {
   const { data, error } = await supabase.from("user_info").select("*");
+  if (error) {
+    console.error(`Error getting Hunters Stats: ${error.message}`);
+    return [];
+  }
   return data;
 };
 const getProjects = async () => {
   const { data, error } = await supabase.from("projects").select("*");
   if (error) {
-    throw new Error(error.message);
+    console.error(`Error getting projects: ${error.message}`);
+    return [];
   }
   const projects = [
     ...data.map((project) => {
@@ -75,7 +81,7 @@ const getProjects = async () => {
 const getOurTeamData = async () => {
   const { data, error } = await supabase.from("our_team").select("*");
   if (error) {
-    console.error(error.message);
+    console.error(`Error getting team data: ${error.message}`);
     return [];
   }
   const finalData = data.map((member) => {
@@ -112,15 +118,10 @@ const getBlogs = async () => {
     return [];
   }
 
-  const finalData = data.map((blog) => {
-    return {
-      blogTitle: blog.blog_title,
-      postingDate: blog.posting_date,
-      imagePath: `${bucketURL}/${blog.image_path}`,
-      blogLink: blog.blog_link,
-    };
+  // order the data so that the newest blogs are first.
+  return data.sort((a, b) => {
+    return new Date(b.posting_date) - new Date(a.posting_date);
   });
-  return finalData;
 };
 
 export {
