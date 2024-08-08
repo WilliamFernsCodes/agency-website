@@ -5,7 +5,18 @@ const supabase = createSupabase(anonKey);
 const bucketURL = `${process.env.NEXT_PUBLIC_SUPABASE_BASE_URL}/storage/v1/object/public`;
 
 const getTestimonialsData = async () => {
-  const { data, error } = await supabase.from("testimonials").select("*");
+  const columnsToSelect = [
+    "title",
+    "review",
+    "poster_name",
+    "amount",
+    "rating",
+    "avatar_url",
+    "job_link",
+  ];
+  const { data, error } = await supabase
+    .from("testimonials")
+    .select(columnsToSelect.join(", "));
   if (error) {
     console.error(error.message);
     return [];

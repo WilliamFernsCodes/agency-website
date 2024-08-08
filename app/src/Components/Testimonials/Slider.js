@@ -11,15 +11,13 @@ import {
 
 import { useInView } from "react-intersection-observer";
 import { capitalizeFirstLetter, shortenText } from "lib/utils";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import useEmblaCarousel from "embla-carousel-react";
 
 //Icons
 import { ChevronLeft, ChevronRight } from "Utils/Icons";
 
 //Data
-import getTestimonialsData from "Data/Testimonials/Testimonials.data";
-
+import { getTestimonialsData } from "lib/supabase";
 //Styles
 import styles from "Styles/Testimonials/Slider.styles";
 
@@ -49,10 +47,7 @@ const Sliders = () => {
   useEffect(() => {
     const setTestimonialsData = async () => {
       const testimonialsData = await getTestimonialsData();
-      const allTestimonials = testimonialsData
-        .map((user) => user.userBounties)
-        .flat();
-      setTestimonials(allTestimonials.sort((a, b) => b.amount - a.amount));
+      setTestimonials(testimonialsData.sort((a, b) => b.amount - a.amount));
     };
     setTestimonialsData();
   }, []);
@@ -82,14 +77,14 @@ const Sliders = () => {
                 testimonials.map((testimonial, i) => {
                   const review = shortenText(testimonial.review, 70);
                   const title = shortenText(testimonial.title, 50);
-                  const name = testimonial.name;
+                  const name = testimonial.poster_name;
                   const backgroundColor = "0D8ABC";
                   const textColor = "fff";
-                  const avatarURL = testimonial.avatarURL.endsWith(
+                  const avatarURL = testimonial.avatar_url.endsWith(
                     "?d=blank&s=256",
                   )
                     ? `https://ui-avatars.com/api/?name=${capitalizeFirstLetter(name.slice(0, 3))}+${capitalizeFirstLetter(name.slice(1, 3))}&background=${backgroundColor}&color=${textColor}`
-                    : testimonial.avatarURL;
+                    : testimonial.avatar_url;
 
                   return (
                     <Box
@@ -100,7 +95,7 @@ const Sliders = () => {
                       <Rating
                         name="half-rating-read"
                         size="large"
-                        defaultValue={Number(testimonial.star)}
+                        defaultValue={Number(testimonial.rating)}
                         precision={0.5}
                         readOnly
                       />
@@ -132,9 +127,9 @@ const Sliders = () => {
                           />
                         </Box>
                       </Box>
-                      {"link" in testimonial && (
+                      {"job_link" in testimonial && (
                         <Link
-                          href={testimonial.link}
+                          href={testimonial.job_link}
                           target="_blank"
                           sx={styles.ViewListingText}
                         >

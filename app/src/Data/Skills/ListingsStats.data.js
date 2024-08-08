@@ -1,5 +1,3 @@
-import bountyHunters from "Data/Team/bountyHunters";
-
 const getListingsStats = async () => {
   const stats = {
     totalProjectsCompleted: 0,
