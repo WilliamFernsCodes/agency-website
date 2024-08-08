@@ -28,8 +28,8 @@ const HeroContent = () => {
             Partner with Experts, Achieve Excellence
           </Typography>
           <Typography variant="p" component="p" sx={styles.Slogan}>
-            We help businesses increase productivity and revenue by crafting
-            custom AI software solutions.
+            We offer premium AI software services to help businesses increase
+            productivity and revenue.
           </Typography>
         </Box>
       </Fade>
