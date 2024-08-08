@@ -9,19 +9,6 @@ import bountyHunters from "Data/Team/bountyHunters";
 // },
 const getTestimonialsData = async () => {
   let data;
-  try {
-    const response = await fetch("/api/getReplitData", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ users: bountyHunters, getUserInfo: false }),
-    });
-    data = await response.json();
-  } catch (error) {
-    console.error(`Error with getting Replit data: ${error}`);
-    return [];
-  }
   return data;
 };
 export default getTestimonialsData;

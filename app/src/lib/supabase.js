@@ -4,6 +4,31 @@ const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createSupabase(anonKey);
 const bucketURL = `${process.env.NEXT_PUBLIC_SUPABASE_BASE_URL}/storage/v1/object/public`;
 
+const getTestimonialsData = async () => {
+  const { data, error } = await supabase.from("testimonials").select("*");
+  if (error) {
+    console.error(error.message);
+    return [];
+  }
+  return data;
+};
+
+const getFromValuesTable = async (id) => {
+  const { data, error } = await supabase
+    .from("values")
+    .select("value")
+    .eq("id", id);
+  if (error) {
+    throw new Error(error.message);
+  }
+  return data[0].value;
+};
+
+const getBountyHuntersInfo = async () => {
+  const userInfo = await getFromValuesTable("bounty_hunters");
+  return JSON.parse(userInfo);
+};
+
 const getProjects = async () => {
   const { data, error } = await supabase.from("projects").select("*");
   if (error) {
@@ -61,7 +86,7 @@ const getBlogs = async () => {
   const columnsToSelect = [
     "blog_title",
     "posting_date",
-    "image_path",
+    "image_url",
     "blog_link",
   ];
   const { data, error } = await supabase
@@ -83,4 +108,10 @@ const getBlogs = async () => {
   return finalData;
 };
 
-export { getProjects, getOurTeamData, getBlogs };
+export {
+  getBountyHuntersInfo,
+  getTestimonialsData,
+  getProjects,
+  getOurTeamData,
+  getBlogs,
+};
