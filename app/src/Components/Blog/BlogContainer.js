@@ -11,6 +11,7 @@ import { useInView } from "react-intersection-observer";
 //Icons
 import { CalendarIcon } from "Utils/Icons";
 import ArrowForwardTwoToneIcon from "@mui/icons-material/ArrowForwardTwoTone";
+import Link from "next/link";
 import { randomItem } from "lib/utils";
 import { useState, useEffect } from "react";
 
@@ -72,21 +73,31 @@ const BlogItem = ({ blog, isMobile }) => {
           sx={styles.Image}
         />
         <Box sx={styles.Content}>
-          <Typography variant="h6" component="h6" sx={styles.Title}>
-            {blog.blog_title}
-          </Typography>
-          <Stack direction="row" sx={{ alignItems: "center" }}>
-            <Box sx={styles.TimeIcon}>
-              <CalendarIcon />
-            </Box>
-            <Typography variant="body1" component="p" sx={styles.TimeText}>
-              {formattedDate}
+          <Box sx={styles.TopContent}>
+            <Typography variant="h6" component="h6" sx={styles.Title}>
+              {blog.blog_title}
             </Typography>
-          </Stack>
-          <ButtonBase sx={styles.Button}>
-            Read More
-            <ArrowForwardTwoToneIcon />
-          </ButtonBase>
+            <Box sx={styles.TimeContainer}>
+              <Box sx={styles.TimeIcon}>
+                <CalendarIcon />
+              </Box>
+              <Typography variant="body1" component="p" sx={styles.TimeText}>
+                {formattedDate}
+              </Typography>
+            </Box>
+          </Box>
+          <Link href={blog.blog_link}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <ButtonBase sx={styles.Button}>
+                Read More
+                <ArrowForwardTwoToneIcon />
+              </ButtonBase>
+            </a>
+          </Link>
         </Box>
       </Box>
     </Fade>

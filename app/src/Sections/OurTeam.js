@@ -12,7 +12,7 @@ const Blog = () => {
       maxWidth={false}
       disableGutters
       as="section"
-      sx={{ py: "5em" }}
+      sx={{ pt: "5em" }}
       id="our-team"
     >
       <SectionHeading value1="Our Team" center={false} />
