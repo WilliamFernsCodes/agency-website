@@ -4,8 +4,6 @@ const secretKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createSupabase(secretKey);
 const bucketURL = `${process.env.NEXT_PUBLIC_SUPABASE_BASE_URL}/storage/v1/object/public`;
 
-const saveTestimonialsData = (testimonialsData) => {};
-
 const getFromValuesTable = async (id) => {
   const { data, error } = await supabase
     .from("values")
@@ -56,9 +54,27 @@ const updateTestimonials = async (testimonialsData) => {
   }
 };
 
+const updateBlogsData = async (blogsData) => {
+  // delete the previous blogs
+  const bulkDeleteResult = await supabase.from("blogs").delete().match({});
+  if (bulkDeleteResult.error) {
+    throw new Error(
+      `Error deleting blogs in bulk: ${bulkDeleteResult.error.message}`,
+    );
+  }
+  // bulk insert the new blogs
+  const bulkInsertResult = await supabase.from("blogs").insert(blogsData);
+  if (bulkInsertResult.error) {
+    throw new Error(
+      `Error inserting blogs in bulk: ${bulkInsertResult.error.message}`,
+    );
+  }
+};
+
 export {
   getFromValuesTable,
   saveTestimonialsData,
   updateUserInfo,
   updateTestimonials,
+  updateBlogsData,
 };

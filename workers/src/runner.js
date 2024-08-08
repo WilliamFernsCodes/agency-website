@@ -1,9 +1,10 @@
-import { getTestimonialsData } from "./workers";
+import { getBlogsData, getTestimonialsData } from "./workers";
 import {
   updateTestimonials,
   updateUserInfo,
   getFromValuesTable,
   updateTestimonials,
+  updateBlogsData,
 } from "./supabase";
 
 const runner = async () => {
@@ -29,6 +30,9 @@ const runner = async () => {
   });
 
   await updateTestimonials(testimonials.flat());
+
+  const blogsData = await getBlogsData();
+  await updateBlogsData(blogsData);
 };
 
 runner();
