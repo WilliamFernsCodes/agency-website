@@ -1,3 +1,4 @@
 import getTestimonialsData from "./getTestimonialsData";
+import getBlogsData from "./getBlogsData";
 
-export { getTestimonialsData };
+export { getBlogsData, getTestimonialsData };
